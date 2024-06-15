@@ -73,11 +73,11 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       screens: {
-        sm: { min: "0px", max: "767px" },
-        // => @media (min-width: 640px) { ... }
+        sm: { min: "0px", max: "1023px" },
+        // => @media (min-width: 640px) 767px{ ... }
 
-        md: "768px",
-        // => @media (min-width: 768px) { ... }
+        // md: "768px",
+        // // => @media (min-width: 768px) { ... }
 
         lg: "1024px",
         // => @media (min-width: 1024px) { ... }

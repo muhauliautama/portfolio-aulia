@@ -7,7 +7,7 @@ function App() {
   const baseBg = [
     {
       miniURL: "/",
-      class: "bg-gradient-to-r from-gray-300 to-gray-500",
+      class: "bg-gradient-to-t from-gray-300 to-gray-500",
     },
     {
       miniURL: "/experience",
@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div
-      className={`p-0 m-0 mx-auto relative ${classURL?.class} h-screen w-screeen`}
+      className={`p-0 m-0 mx-auto relative ${classURL?.class} h-screen w-screen sm:w-auto`}
     >
       <SidebarLink />
       <Root></Root>

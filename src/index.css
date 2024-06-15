@@ -82,6 +82,10 @@
   }
 }
 
+body{
+  overflow: hidden;
+}
+
 .ff-1 {
   font-family: "Acumin Pro", sans-serif;
 }

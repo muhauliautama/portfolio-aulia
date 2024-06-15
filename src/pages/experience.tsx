@@ -53,31 +53,50 @@ const experience = () => {
       transition={{ duration: 0.5 }}
       exit={{ opacity: 0, transition: { duration: 1 } }}
     >
-      <span className="text-[52px] font-bold ml-[50px] mt-10">Experience</span>
+      <span className="text-[52px] font-bold ml-[50px] mt-10 sm:text-[40px] sm:mx-auto sm:my-4 sm:underline sm:underline-offset-[15px] ff-3">
+        Experience
+      </span>
       {/* ornamen kanan */}
-      <div className="w-[300px] h-[70px] rounded-full bg-white fixed right-[-80px] top-[40px]"></div>
+      <div className="w-[300px] h-[70px] rounded-full bg-white fixed right-[-80px] top-[40px] sm:top-[40%] sm:w-[200px] sm:blur-sm"></div>
       {/* ornamen kiri */}
-      <div className="w-[400px] h-[400px] rounded-full bg-[#191917] fixed left-[-250px] top-[200px]"></div>
-      <div className="w-[100px] h-[100px] rounded-full bg-[#f7c002] fixed left-[-50px] top-[180px]"></div>
+      <div className="w-[400px] h-[400px] rounded-full bg-[#191917] fixed left-[-250px] top-[200px] sm:top-0 sm:blur-sm"></div>
+      <div className="w-[100px] h-[100px] rounded-full bg-[#f7c002] fixed left-[-50px] top-[180px] sm:top-0 sm:blur-sm"></div>
 
       {/* garis */}
-      <div className="w-1 h-[285px] rounded-xl bg-[#686868] fixed top-[35%] left-[47%]"></div>
-      <div className="grid grid-cols-[repeat(2,auto)] justify-center gap-x-[80px] gap-y-10 m-auto h-scrdeen">
+      <div className="w-1 h-[285px] rounded-xl bg-[#686868] fixed top-[35%] left-[47%] sm:hidden"></div>
+      <div className="grid grid-cols-[repeat(2,auto)] sm:grid-cols-1 justify-center gap-x-[80px] gap-y-10 m-auto h-screen sm:h-auto sm:overflow-y-auto sm:overflow-x-hidden sm:m-5">
         {jejak.map((key) => {
           return (
             <div
               key={key.id}
-              className="flex flex-row flex-wrap items-center gap-5 w-[500px] h-fit"
+              className="flex flex-row flex-wrap items-center gap-5 w-[500px] h-fit z-10"
             >
-              <div className="rounded-full p-4 bg-[#F7C002] border-none w-fit h-fit">
-                <BsBagCheckFill color="black" size={24} />
+              <div className="rounded-full p-4 bg-[#F7C002] border-none w-fit h-fit sm:hidden">
+                <BsBagCheckFill
+                  className="sm:text-[10px]"
+                  color="black"
+                  size={24}
+                />
               </div>
+              <span className="font-bold text-sm bg-[#f7c002]  shadow-xl rounded-full w-[50px] h-[50px] px-2 py-[15px] text-black ff-2 hidden sm:block">
+                {key?.tahun?.includes("Present") ? "Now'" : key.tahun}
+              </span>
               <div className="flex flex-col ff-1">
-                <span className="font-bold text-lg">{key.tahun}</span>
-                <span className="font-medium">
+                <span className="font-bold text-lg sm:hidden">{key.tahun}</span>
+                <span className="font-medium sm:hidden">
                   {key.role} - {key.company}
                 </span>
-                <span className="font-normal text-xs">{key.jobdesk}</span>
+                <div className="hidden sm:block">
+                  <span className="font-bold ff-2 text-md hidden sm:block">
+                    {key.role}
+                  </span>
+                  <span className="font-bold ff-2 text-md hidden sm:block">
+                    {key.company}
+                  </span>
+                </div>
+                <span className="font-normal text-xs sm:hidden">
+                  {key.jobdesk}
+                </span>
               </div>
             </div>
           );
