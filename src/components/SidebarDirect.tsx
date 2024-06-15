@@ -1,6 +1,10 @@
 import { TiHome } from "react-icons/ti";
-import { BsPersonFill } from "react-icons/bs";
-import { HiDocument } from "react-icons/hi2";
+import {
+  BsPersonFill,
+  BsFillFileEarmarkCheckFill,
+  BsFillFolderFill,
+  BsLightningFill,
+} from "react-icons/bs";
 import { useLocation, Link } from "react-router-dom";
 const SidebarDirect = () => {
   const url = useLocation();
@@ -13,16 +17,26 @@ const SidebarDirect = () => {
     },
     {
       id: 3,
-      icon: <HiDocument className="icon-sidebar" size="30px" />,
-      url: "/cv",
+      icon: <BsFillFileEarmarkCheckFill className="icon-sidebar" size="30px" />,
+      url: "/experience",
+    },
+    {
+      id: 4,
+      icon: <BsFillFolderFill className="icon-sidebar" size="30px" />,
+      url: "/projects",
+    },
+    {
+      id: 5,
+      icon: <BsLightningFill className="icon-sidebar" size="30px" />,
+      url: "/skills",
     },
   ];
 
   return (
-    <div className="flex flex-col gap-8 bg-[#FCC503] w-fit p-5 pt-14 pb-14 rounded-[28px] fixed right-5 top-[40%]">
+    <div className="flex flex-col gap-8 bg-[#FCC503] w-fit p-5 pt-14 pb-14 rounded-[28px] fixed right-5 top-[25%] z-50">
       {data.map((key) => {
         return (
-          <Link to={key.url} key={key.id}>
+          <Link to={key.url} key={key.id} className="text-[#000]">
             {key.icon}{" "}
             <div
               className={`selected-icon ${url.pathname != key.url && "hidden"}`}
