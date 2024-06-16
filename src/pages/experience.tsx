@@ -53,14 +53,14 @@ const experience = () => {
       transition={{ duration: 0.5 }}
       exit={{ opacity: 0, transition: { duration: 1 } }}
     >
-      <span className="text-[52px] font-bold ml-[50px] mt-10 sm:text-[40px] sm:mx-auto sm:my-4 sm:underline sm:underline-offset-[15px] ff-3">
+      <span className="text-[70px] font-bold ml-[50px] mt-10 sm:text-[40px] sm:mx-auto sm:py-8 sm:underline sm:underline-offset-[15px] ff-3">
         Experience
       </span>
       {/* ornamen kanan */}
-      <div className="w-[300px] h-[70px] rounded-full bg-white fixed right-[-80px] top-[40px] sm:top-[40%] sm:w-[200px] sm:blur-sm"></div>
+      <div className="w-[300px] h-[70px] rounded-full bg-white fixed right-[-80px] top-[40px] sm:top-[40%] sm:w-[200px] sm:hidden"></div>
       {/* ornamen kiri */}
-      <div className="w-[400px] h-[400px] rounded-full bg-[#191917] fixed left-[-250px] top-[200px] sm:top-0 sm:blur-sm"></div>
-      <div className="w-[100px] h-[100px] rounded-full bg-[#f7c002] fixed left-[-50px] top-[180px] sm:top-0 sm:blur-sm"></div>
+      <div className="w-[400px] h-[400px] rounded-full bg-[#191917] fixed left-[-250px] top-[200px] sm:top-0 sm:hidden"></div>
+      <div className="w-[100px] h-[100px] rounded-full bg-[#f7c002] fixed left-[-50px] top-[180px] sm:top-0 sm:hidden"></div>
 
       {/* garis */}
       <div className="w-1 h-[285px] rounded-xl bg-[#686868] fixed top-[35%] left-[47%] sm:hidden"></div>
@@ -78,7 +78,7 @@ const experience = () => {
                   size={24}
                 />
               </div>
-              <span className="font-bold text-sm bg-[#f7c002]  shadow-xl rounded-full w-[50px] h-[50px] px-2 py-[15px] text-black ff-2 hidden sm:block">
+              <span className="font-bold text-sm bg-[#f7c002]  shadow-xl rounded-full w-[50px] h-[50px] px-2 py-[15px] text-black hidden sm:block">
                 {key?.tahun?.includes("Present") ? "Now'" : key.tahun}
               </span>
               <div className="flex flex-col ff-1">
@@ -87,10 +87,10 @@ const experience = () => {
                   {key.role} - {key.company}
                 </span>
                 <div className="hidden sm:block">
-                  <span className="font-bold ff-2 text-md hidden sm:block">
+                  <span className="font-bold text-md hidden sm:block">
                     {key.role}
                   </span>
-                  <span className="font-bold ff-2 text-md hidden sm:block">
+                  <span className="font-bold text-md hidden sm:block">
                     {key.company}
                   </span>
                 </div>

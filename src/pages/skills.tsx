@@ -90,13 +90,7 @@ const skills = () => {
       icon: <FaCode color="#FFC700" size={42} />,
       title: "Web Development",
       detail:
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed nihil minima fugiat eos, cumque quae illum doloribus quos iure animi error, excepturi perferendis. Ipsam architecto officia natus praesentium, cupiditate tempora itaque beatae temporibus velit exercitationem quam quod suscipit sapiente odio delectus aliquid iste eveniet, culpa, eius blanditiis aut. Non, eius?",
-    },
-    {
-      icon: <FaCode color="#FFC700" size={42} />,
-      title: "Web Development",
-      detail:
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed nihil minima fugiat eos, cumque quae illum doloribus quos iure animi error, excepturi perferendis. Ipsam architecto officia natus praesentium, cupiditate tempora itaque beatae temporibus velit exercitationem quam quod suscipit sapiente odio delectus aliquid iste eveniet, culpa, eius blanditiis aut. Non, eius?",
+        "Seorang Front End Web Developer dengan pengalaman dan keahlian dalam menciptakan antarmuka pengguna yang menarik dan responsif. Apakah Anda membutuhkan website yang tidak hanya fungsional tetapi juga memukau secara visual? Saya siap membantu Anda mencapai tujuan tersebut.",
     },
   ];
 
@@ -108,40 +102,42 @@ const skills = () => {
       transition={{ duration: 0.5 }}
       exit={{ opacity: 0, transition: { duration: 1 } }}
     >
-      <span className="text-[52px] font-bold ml-[50px] mt-10">My Skills</span>
+      <span className="text-[70px] font-bold ml-[50px] mt-10 ff-3 sm:ml-0 sm:text-center sm:text-[40px] sm:mx-auto sm:my-4 sm:underline sm:underline-offset-[15px] sm:w-full">
+        My Skills
+      </span>
       {/* ornamen kanan */}
-      <div className="w-[300px] h-[70px] rounded-full bg-white fixed right-[-80px] top-[40px]"></div>
+      <div className="w-[300px] h-[70px] rounded-full bg-white fixed right-[-80px] top-[40px] sm:hidden"></div>
       {/* ornamen kiri */}
-      <div className="w-[400px] h-[400px] rounded-full bg-[#191917] fixed left-[-250px] top-[200px]"></div>
-      <div className="w-[100px] h-[100px] rounded-full bg-[#f7c002] fixed left-[-50px] top-[180px]"></div>
-      <div className="flex justify-center gap-10">
+      <div className="w-[400px] h-[400px] rounded-full bg-[#191917] fixed left-[-250px] top-[200px] sm:hidden"></div>
+      <div className="w-[100px] h-[100px] rounded-full bg-[#f7c002] fixed left-[-50px] top-[180px] sm:hidden"></div>
+      <div className="flex justify-center gap-10 sm:flex-col sm:overflow-y-auto sm:gap-5 sm:p-5">
         <div className="flex flex-col gap-8 my-auto">
-          <div className="grid grid-cols-[repeat(1,auto)] gap-10 m-0 w-[500px]">
+          <div className="grid grid-cols-[repeat(1,auto)] gap-10 m-0 w-[500px] sm:w-auto">
             {cardList.map((key) => {
               return (
-                <div className="bg-[#131312] rounded-lg p-3 flex flex-col items-center justify-center text-center shadow-xl border-white border">
+                <div className="bg-[#131312] rounded-lg p-3 flex flex-col items-center justify-center text-center shadow-xl border-white border gap-2">
                   {key.icon}
-                  <span>{key.title}</span>
-                  <span>{key.detail}</span>
+                  <span className="font-bold text-lg">{key.title}</span>
+                  <span className="text-justify">{key.detail}</span>
                 </div>
               );
             })}
           </div>
         </div>
-        <div className="w-1 h-full rounded-xl bg-[#f7c002]"></div>
+        <div className="w-1 h-full rounded-xl bg-[#f7c002] sm:w-72 sm:m-auto sm:h-1 sm:mt-3"></div>
         <div className="flex flex-col gap-8">
-          <span className="text-[48px] font-bold mt-10 text-center mt-0">
+          <span className="text-[48px] font-bold mt-10 text-center mt-0 sm:hidden">
             Software Skills
           </span>
-          <div className="grid grid-cols-[repeat(4,auto)] gap-10 m-0 w-fit">
+          <div className="grid grid-cols-[repeat(4,auto)] gap-10 m-0 w-fit sm:p-5 sm:gap-5 sm:justify-center sm:w-full">
             {stack.map((key) => {
               return (
                 <Link
                   to={key.link}
-                  className="flex flex-row flex-wrap items-center gap-5 w-[100px] h-fit justify-center"
+                  className="flex flex-row flex-wrap items-center gap-5 w-[100px] h-fit justify-center hover:ease-in"
                 >
                   <img
-                    className="rounded-full p-1 bg-white border-none w-[80px] h-[80px]"
+                    className="rounded-full p-1 bg-white border-none w-[80px] h-[80px] ease-in-out"
                     src={key.icon}
                     alt="image-skills"
                   />

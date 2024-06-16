@@ -1,5 +1,4 @@
 import ImgPerson from "@/assets/kadal.png";
-import Particles from "@/components/Particle";
 import { motion } from "framer-motion";
 
 const home = () => {
@@ -11,13 +10,12 @@ const home = () => {
       transition={{ duration: 0.5 }}
       exit={{ opacity: 0, transition: { duration: 1 } }}
     >
-      <div className="ff-1 flex flex-col justify-center h-screen text-start gap-3 px-3 w-auto lg:w-[700px] lg:ml-[200px] sm:">
-        {/* <Particles /> */}
+      <div className="ff-1 flex flex-col justify-center h-screen text-start gap-3 px-3 w-auto lg:w-[700px] lg:ml-[200px] sm:px-8">
         <div className="w-[100px] h-[100px] rounded-full bg-[#f7c002] fixed left-[-50px] top-[200px] sm:hidden"></div>
-        <span className="ff-latin text-[40px] mb-[50px] ">
+        <span className="ff-latin text-[40px] mb-[50px]">
           Airlangga Joyonegoro
         </span>
-        <span className="font-[800] text-[30px] lg:text-[50px] ">
+        <span className="font-[800] text-[60px] lg:text-[50px] ff-2">
           I am
           <br /> Airlangga
           <br /> Front End Web Developer

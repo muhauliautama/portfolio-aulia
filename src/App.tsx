@@ -2,6 +2,8 @@ import "./App.css";
 import Root from "@/routes/Root.js";
 import SidebarLink from "@/components/SidebarDirect";
 import { useLocation } from "react-router-dom";
+import Particles from "@/components/Particle";
+
 function App() {
   const url = useLocation();
   const baseBg = [
@@ -27,6 +29,7 @@ function App() {
       className={`p-0 m-0 mx-auto relative ${classURL?.class} h-screen w-screen sm:w-auto`}
     >
       <SidebarLink />
+      <Particles/>
       <Root></Root>
     </div>
   );
