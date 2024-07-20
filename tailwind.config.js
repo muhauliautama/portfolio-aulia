@@ -18,6 +18,10 @@ module.exports = {
     },
     extend: {
       colors: {
+        grayText: "#8F8F8F",
+        grayBg: "#212121",
+        grayBorder: "#2A2A2A",
+        grayTextContent: "#C0C0C0",
         yellow: "#F7C002",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -73,20 +77,9 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       screens: {
-        sm: { min: "0px", max: "1023px" },
-        // => @media (min-width: 640px) 767px{ ... }
-
-        // md: "768px",
-        // // => @media (min-width: 768px) { ... }
-
-        lg: "1024px",
-        // => @media (min-width: 1024px) { ... }
-
-        xl: "1280px",
-        // => @media (min-width: 1280px) { ... }
-
-        "2xl": "1536px",
-        // => @media (min-width: 1536px) { ... }
+        xs: { max: "360px" },
+        sm: { max: "550px" },
+        md: { max: "1023px" },
       },
     },
   },

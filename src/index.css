@@ -82,8 +82,8 @@
 }
 
 body {
-  overflow: hidden;
-  font-family: "Light" !important;
+  /* font-family: "Light" !important; */
+  background: #161616;
 }
 
 * {
@@ -135,8 +135,8 @@ body {
   background-color: #f7c002;
 }
 
-.icon-sidebarr:hover {
-  /* color: white; */
+.icon-sidebarr:hover, .icon-sidebar:hover {
+  color: white;
   cursor: pointer;
 }
 .icon-sidebarr.bg-white:hover {
