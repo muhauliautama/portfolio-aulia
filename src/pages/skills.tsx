@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import htmlIcon from "@/assets/html.png";
 import cssIcon from "@/assets/css.png";
@@ -95,13 +94,7 @@ const skills = () => {
   ];
 
   return (
-    <motion.div
-      className="skills flex flex-col h-screen"
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}
-      exit={{ opacity: 0, transition: { duration: 1 } }}
-    >
+    <>
       <span className="text-[70px] font-bold ml-[50px] mt-10 ff-3 sm:ml-0 sm:text-center sm:text-[40px] sm:mx-auto sm:my-4 sm:underline sm:underline-offset-[15px] sm:w-full">
         My Skills
       </span>
@@ -147,7 +140,7 @@ const skills = () => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </>
   );
 };
 

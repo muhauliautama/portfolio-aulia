@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import ImgPerson from "@/assets/kadal.png";
 import {
   BiLogoTwitter,
@@ -25,14 +24,7 @@ const about = () => {
     { icon: <BiLogoGmail size={38} />, path: "mailto:oyojwork@gmail.com" },
   ];
   return (
-    <motion.div
-      className="about h-screen flex relative "
-      transition={{
-        width: "100%",
-        transform: "translateY(0px)",
-        position: "absolute",
-      }}
-    >
+    <>
       <div className="w-[20%] bg-[#0D0D0B] text-white h-full flex flex-col justify-center items-center gap-5 sm:hidden">
         <div className="rounded-full object-contain bg-[#FCC503] w-auto h-auto overflow-hidden z-50 sm:hidden ">
           <img
@@ -81,7 +73,7 @@ const about = () => {
         <span className="ff-3 text-[40px] text-[#FCC503] hidden sm:block mx-auto mb-3">
           Lets Connect !
         </span>
-        <div className="gap-3 hidden sm:flex mx-auto">
+        <div className="gap-5 hidden sm:flex mx-auto">
           {sosmed.map((key2) => {
             return (
               <Link
@@ -96,7 +88,7 @@ const about = () => {
           })}
         </div>
       </div>
-    </motion.div>
+    </>
   );
 };
 

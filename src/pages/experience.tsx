@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { BsBagCheckFill } from "react-icons/bs";
 const experience = () => {
   const jejak = [
@@ -46,13 +45,7 @@ const experience = () => {
     },
   ];
   return (
-    <motion.div
-      className="experience flex flex-col h-screen"
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}
-      exit={{ opacity: 0, transition: { duration: 1 } }}
-    >
+    <>
       <span className="text-[70px] font-bold ml-[50px] mt-10 sm:text-[40px] sm:mx-auto sm:py-8 sm:underline sm:underline-offset-[15px] ff-3">
         Experience
       </span>
@@ -102,7 +95,7 @@ const experience = () => {
           );
         })}
       </div>
-    </motion.div>
+    </>
   );
 };
 

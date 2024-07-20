@@ -1,15 +1,23 @@
 import "./App.css";
+// font
+// import "./assets/otterco/Otterco-ExtraBold.otf"
+// import "./assets/otterco/Otterco-SemiBold.otf"
+// import "./assets/otterco/Otterco-Bold.otf"
+// import "./assets/otterco/Otterco-Medium.otf"
+// import "./assets/otterco/Otterco-Regular.otf"
+// import "./assets/otterco/Otterco-.otf"
+
 import Root from "@/routes/Root.js";
 import SidebarLink from "@/components/SidebarDirect";
 import { useLocation } from "react-router-dom";
-import Particles from "@/components/Particle";
 
 function App() {
   const url = useLocation();
   const baseBg = [
     {
       miniURL: "/",
-      class: "bg-gradient-to-t from-gray-300 to-gray-500",
+      // class: "bg-gradient-to-t from-gray-300 to-gray-500",
+      class: "bg-[#161616]",
     },
     {
       miniURL: "/experience",
@@ -26,10 +34,9 @@ function App() {
 
   return (
     <div
-      className={`p-0 m-0 mx-auto relative ${classURL?.class} h-screen w-screen sm:w-auto`}
+      className={`p-0 m-0 mx-auto relative ${classURL?.class} h-screen w-screen sm:w-auto sm:p-3`}
     >
       <SidebarLink />
-      <Particles/>
       <Root></Root>
     </div>
   );
