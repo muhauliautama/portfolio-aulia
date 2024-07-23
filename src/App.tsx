@@ -35,7 +35,7 @@ function App() {
   return (
     <div
       // className={`p-0 m-0 mx-auto relative ${classURL?.class} h-full w-screen sm:w-auto sm:p-3`}
-      className={`bg-[#161616] h-screen md:w-auto md:p-3`}
+      className={`bg-[#161616] h-screen w-[800px] md:w-auto p-3 container`}
     >
       <SidebarLink />
       <Root></Root>

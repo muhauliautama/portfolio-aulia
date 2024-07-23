@@ -1,20 +1,20 @@
 import { Link } from "react-router-dom";
-import htmlIcon from "@/assets/html.png";
-import cssIcon from "@/assets/css.png";
-import sassIcon from "@/assets/sass.png";
-import jsIcon from "@/assets/js.png";
-import tsIcon from "@/assets/ts.png";
-import ciIcon from "@/assets/codeigniter.svg";
-import laravelIcon from "@/assets/laravel.png";
-import jqueryIcon from "@/assets/jquery.svg";
-import reactIcon from "@/assets/react.png";
-import nextIcon from "@/assets/nextjs.svg";
-import reduxIcon from "@/assets/redux.svg";
-import tailwindIcon from "@/assets/tailwind.png";
-import bstIcon from "@/assets/bootstrap.svg";
-import gitIcon from "@/assets/git.png";
-import bunIcon from "@/assets/bun.png";
-import figmaIcon from "@/assets/figma.png";
+// import htmlIcon from "@/assets/html.png";
+// import cssIcon from "@/assets/css.png";
+// import sassIcon from "@/assets/sass.png";
+// import jsIcon from "@/assets/js.png";
+// import tsIcon from "@/assets/ts.png";
+// import ciIcon from "@/assets/codeigniter.svg";
+// import laravelIcon from "@/assets/laravel.png";
+// import jqueryIcon from "@/assets/jquery.svg";
+// import reactIcon from "@/assets/react.png";
+// import nextIcon from "@/assets/nextjs.svg";
+// import reduxIcon from "@/assets/redux.svg";
+// import tailwindIcon from "@/assets/tailwind.png";
+// import bstIcon from "@/assets/bootstrap.svg";
+// import gitIcon from "@/assets/git.png";
+// import bunIcon from "@/assets/bun.png";
+// import figmaIcon from "@/assets/figma.png";
 import { BiSolidFileBlank, BiSend } from "react-icons/bi";
 import Button from "@/components/Button";
 import {
@@ -111,37 +111,37 @@ const about = () => {
       status: "Fulltime",
     },
     {
-      name: "PT. AZLogistik Dot Com",
-      year: "2022 - Now",
+      name: "CV. Nusantara Jagung Malang",
+      year: "2022",
       role: "Front End Web Developer",
       icon: <TbCircleNumber2Filled className="xs:hidden" size={20} />,
-      status: "Fulltime",
+      status: "Lecturer Project",
     },
     {
-      name: "PT. AZLogistik Dot Com",
-      year: "2022 - Now",
+      name: "Brawijaya University (Faculty Economy and Business)",
+      year: "2022",
       role: "Front End Web Developer",
       icon: <TbCircleNumber3Filled className="xs:hidden" size={20} />,
-      status: "Fulltime",
+      status: "Freelance",
     },
     {
-      name: "PT. AZLogistik Dot Com",
-      year: "2022 - Now",
-      role: "Front End Web Developer",
+      name: "Perum Bulog Malang",
+      year: "2022",
+      role: "Fullstack Web Developer",
       icon: <TbCircleNumber4Filled className="xs:hidden" size={20} />,
-      status: "Fulltime",
+      status: "Internship",
     },
     {
-      name: "PT. AZLogistik Dot Com",
-      year: "2022 - Now",
-      role: "Front End Web Developer",
+      name: "PT. Geomedia Sinergi Malang",
+      year: "2019",
+      role: "Backend Developer",
       icon: <TbCircleNumber5Filled className="xs:hidden" size={20} />,
-      status: "Fulltime",
+      status: "Internship",
     },
   ];
 
   return (
-    <main className="ff-1 flex flex-col h-fit text-start gap-3 px-3 w-auto md:bg-grayBg md:rounded-xl md:shadow-xl md:py-5 md:my-2 md:border md:border-grayBorder xs:px-1">
+    <main className="ff-1 flex flex-col h-fit text-start gap-3 px-3 w-auto bg-grayBg rounded-xl shadow-xl py-5 my-2 border border-grayBorder xs:px-1">
       <section className="items-center px-5">
         <div className="flex gap-4 items-center">
           <div className="rounded-full bg-[#626262] w-2 h-2"></div>
@@ -158,7 +158,7 @@ const about = () => {
           attention to detail.
         </span>
       </section>
-      <section className="hidden md:flex justify-between bg-grayBorder rounded-xl shadow-xl border border-grayBorder p-5 flex-col gap-5 sm:gap-4">
+      <section className="flex justify-between bg-grayBorder rounded-xl shadow-xl border border-grayBorder p-5 flex-col gap-5 sm:gap-4">
         <div className="flex gap-4 items-center">
           <div className="rounded-full bg-[#626262] w-2 h-2"></div>
           <span className="text-grayTextContent text-xl sm:text-lg xs:text-sm font-bold">
@@ -167,13 +167,17 @@ const about = () => {
         </div>
         {office.map((key) => {
           return (
-            <div className="hidden md:flex justify-between bg-[#373737] rounded-xl shadow-xl border border-grayBorder p-5 flex-col gap-5 xs:gap-4 ">
+            <div className="flex justify-between bg-[#373737] rounded-xl shadow-xl border border-grayBorder p-5 flex-col gap-5 xs:gap-4 ">
               <div className="flex justify-between text-white xs:flex-col">
                 <div className="flex gap-2 items-center">
                   {key.icon}
-                  <span className="font-bold text-base sm:text-sm">{key.name}</span>
+                  <span className="font-bold text-base sm:text-sm">
+                    {key.name}
+                  </span>
                 </div>
-                <span className="font-normal text-base sm:text-sm">{key.year}</span>
+                <span className="font-normal text-base sm:text-sm">
+                  {key.year}
+                </span>
               </div>
               <div className="flex gap-3 xs:flex-col">
                 <span className="text-grayText text-sm font-semibold bg-[#424242] rounded-xl py-1 px-3 w-fit">
@@ -187,7 +191,7 @@ const about = () => {
           );
         })}
       </section>
-      <section className="hidden md:flex justify-between bg-grayBorder rounded-xl shadow-xl border border-grayBorder p-5 flex-col gap-5 sm:gap-4">
+      <section className="flex justify-between bg-grayBorder rounded-xl shadow-xl border border-grayBorder p-5 flex-col gap-5 sm:gap-4">
         {/* <div className="flex gap-4 items-center">
           <div className="rounded-full bg-[#626262] w-2 h-2"></div>
           <span className="text-grayTextContent text-xl xs:text-sm font-bold">
@@ -207,7 +211,7 @@ const about = () => {
           })}
         </div>
       </section>
-      <section className="hidden md:flex justify-center items-center lg:bg-grayBorder lg:rounded-xl lg:shadow-xl lg:border lg:border-grayBorder p-5 flex-col gap-5 sm:gap-4">
+      <section className="flex justify-center items-center lg:bg-grayBorder lg:rounded-xl lg:shadow-xl lg:border lg:border-grayBorder p-5 flex-col gap-5 sm:gap-4">
         <span className="text-white text-3xl font-bold">
           Let's Work Together.
         </span>
@@ -218,14 +222,18 @@ const about = () => {
           <Button
             className="border-none xs:text-sm"
             icon={<BiSend className="text-[#8F8F8F]" />}
-            onClick={() => console.log("hire me click")}
+            onClick={() => window.open("mailto:oyojwork@gmail.com")}
           >
             Hire me
           </Button>
           <Button
             className="bg-transparent border border-grayBorder xs:text-sm"
             icon={<BiSolidFileBlank className="text-[#8F8F8F]" />}
-            onClick={() => console.log("cv click")}
+            onClick={() =>
+              window.open(
+                "https://drive.google.com/file/d/1Zzl5JJBTmtMHhEteBrJMqJdBgLer9ZUQ/view?usp=drive_link"
+              )
+            }
           >
             My CV
           </Button>

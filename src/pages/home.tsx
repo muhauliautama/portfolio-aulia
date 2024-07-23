@@ -42,8 +42,8 @@ const home = () => {
   const yearCount = new Date().getFullYear();
 
   return (
-    <main className="ff-1 flex flex-col h-fit text-start gap-3 px-3 w-auto md:bg-grayBg md:rounded-xl md:shadow-xl md:py-5 md:my-2 md:border md:border-grayBorder xs:px-1">
-      <section className="hidden md:flex justify-between items-center px-5">
+    <main className="ff-1 flex flex-col h-fit text-start gap-3 px-3 w-auto bg-grayBg rounded-xl shadow-xl py-5 my-2 border border-grayBorder xs:px-1">
+      <section className="flex justify-between items-center px-5">
         <div className="flex gap-4 items-center">
           <div className="rounded-full bg-[#626262] w-2 h-2"></div>
           <span className="text-grayTextContent text-xl sm:text-lg xs:text-sm font-bold">
@@ -57,37 +57,79 @@ const home = () => {
           </span>
         </div>
       </section>
-      <section className="hidden md:flex flex-col gap-2 justify-center items-center text-center my-12">
-        <div className="border border-grayBorder w-[160px] h-[160px] overflow-hidden rounded-full p-3 bg-[#2C2C2C]">
-          <img src={ImgPerson} alt="img" />
+      <section>
+        <div className="flex justify-center items-center text-start my-12 md:hidden gap-16">
+          <div className="flex flex-col gap-2">
+            <span className="text-white text-4xl font-bold my-3 sm:text-2xl">
+              I'm Airlangga
+            </span>
+            <span className="text-grayText text-md sm:text-sm">
+              Front End Web Developer from Malang, Indonesia.
+            </span>
+            <span className="text-grayText text-md sm:text-sm">
+              Currently still learning about Typescript :)
+            </span>
+            <div className="flex gap-3 mt-6">
+              <Button
+                className="border-none xs:text-sm"
+                icon={<BiSend className="text-[#8F8F8F]" />}
+                onClick={() => window.open("mailto:oyojwork@gmail.com")}
+              >
+                Hire me
+              </Button>
+              <Button
+                className="bg-transparent border border-grayBorder xs:text-sm"
+                icon={<BiSolidFileBlank className="text-[#8F8F8F]" />}
+                onClick={() =>
+                  window.open(
+                    "https://drive.google.com/file/d/1Zzl5JJBTmtMHhEteBrJMqJdBgLer9ZUQ/view?usp=drive_link"
+                  )
+                }
+              >
+                My CV
+              </Button>
+            </div>
+          </div>
+          <div className="border border-grayBorder w-[160px] h-[160px] overflow-hidden rounded-full p-3 bg-[#2C2C2C]">
+            <img src={ImgPerson} alt="img" defaultValue={ImgPerson} />
+          </div>
         </div>
-        <span className="text-white text-4xl font-bold my-3 sm:text-2xl">
-          I'm Airlangga
-        </span>
-        <span className="text-grayText text-md sm:text-sm">
-          Front End Web Developer from Malang, Indonesia.
-        </span>
-        <span className="text-grayText text-md sm:text-sm">
-          Currently still learning about Typescript :)
-        </span>
-        <div className="flex gap-3 mt-6">
-          <Button
-            className="border-none xs:text-sm"
-            icon={<BiSend className="text-[#8F8F8F]" />}
-            onClick={() => console.log("hire me click")}
-          >
-            Hire me
-          </Button>
-          <Button
-            className="bg-transparent border border-grayBorder xs:text-sm"
-            icon={<BiSolidFileBlank className="text-[#8F8F8F]" />}
-            onClick={() => console.log("cv click")}
-          >
-            My CV
-          </Button>
+        <div className="hidden md:flex flex-col gap-2 justify-center items-center text-center my-12">
+          <div className="border border-grayBorder w-[160px] h-[160px] overflow-hidden rounded-full p-3 bg-[#2C2C2C]">
+            <img src={ImgPerson} alt="img" defaultValue={ImgPerson} />
+          </div>
+          <span className="text-white text-4xl font-bold my-3 sm:text-2xl">
+            I'm Airlangga
+          </span>
+          <span className="text-grayText text-md sm:text-sm">
+            Front End Web Developer from Malang, Indonesia.
+          </span>
+          <span className="text-grayText text-md sm:text-sm">
+            Currently still learning about Typescript :)
+          </span>
+          <div className="flex gap-3 mt-6">
+            <Button
+              className="border-none xs:text-sm"
+              icon={<BiSend className="text-[#8F8F8F]" />}
+              onClick={() => window.open("mailto:oyojwork@gmail.com")}
+            >
+              Hire me
+            </Button>
+            <Button
+              className="bg-transparent border border-grayBorder xs:text-sm"
+              icon={<BiSolidFileBlank className="text-[#8F8F8F]" />}
+              onClick={() =>
+                window.open(
+                  "https://drive.google.com/file/d/1Zzl5JJBTmtMHhEteBrJMqJdBgLer9ZUQ/view?usp=drive_link"
+                )
+              }
+            >
+              My CV
+            </Button>
+          </div>
         </div>
       </section>
-      <section className="hidden md:flex justify-between bg-grayBorder rounded-xl shadow-xl border border-grayBorder p-5 sm:flex-col sm:gap-4 ">
+      <section className="flex justify-between bg-grayBorder rounded-xl shadow-xl border border-grayBorder p-5 sm:flex-col sm:gap-4 ">
         <div className="flex gap-4 items-center">
           <div className="rounded-full bg-[#626262] w-2 h-2"></div>
           <span className="text-grayTextContent text-xl sm:text-base font-bold">
@@ -107,7 +149,7 @@ const home = () => {
           })}
         </div>
       </section>
-      <section className="hidden md:flex justify-center bg-grayBorder rounded-xl shadow-xl border border-grayBorder p-5">
+      <section className="flex justify-center bg-grayBorder rounded-xl shadow-xl border border-grayBorder p-5">
         <span className="text-grayTextContent text-xs font-thin">
           @{yearCount} Last Updated - Airlangga Joyonegoro
         </span>
