@@ -1,22 +1,5 @@
 import { Link } from "react-router-dom";
-// import htmlIcon from "@/assets/html.png";
-// import cssIcon from "@/assets/css.png";
-// import sassIcon from "@/assets/sass.png";
-// import jsIcon from "@/assets/js.png";
-// import tsIcon from "@/assets/ts.png";
-// import ciIcon from "@/assets/codeigniter.svg";
-// import laravelIcon from "@/assets/laravel.png";
-// import jqueryIcon from "@/assets/jquery.svg";
-// import reactIcon from "@/assets/react.png";
-// import nextIcon from "@/assets/nextjs.svg";
-// import reduxIcon from "@/assets/redux.svg";
-// import tailwindIcon from "@/assets/tailwind.png";
-// import bstIcon from "@/assets/bootstrap.svg";
-// import gitIcon from "@/assets/git.png";
-// import bunIcon from "@/assets/bun.png";
-// import figmaIcon from "@/assets/figma.png";
 import { BiSolidFileBlank, BiSend } from "react-icons/bi";
-import Button from "@/components/Button";
 import {
   TbCircleNumber1Filled,
   TbCircleNumber2Filled,
@@ -43,7 +26,7 @@ import {
   SiTailwindcss,
 } from "react-icons/si";
 
-const about = () => {
+const about = ({ dark }: { dark: any }) => {
   const stack = [
     {
       icon: <FaHtml5 size={50} />,
@@ -139,17 +122,36 @@ const about = () => {
       status: "Internship",
     },
   ];
+  const darkMode = dark;
 
   return (
-    <main className="ff-1 flex flex-col h-fit text-start gap-3 px-3 w-auto bg-grayBg rounded-xl shadow-xl py-5 my-2 border border-grayBorder xs:px-1">
+    <main
+      className={`ff-1 flex flex-col h-fit text-start gap-3 px-3 w-auto rounded-xl shadow-xl py-5 my-2 border xs:px-1 ${
+        !darkMode
+          ? "bg-grayBg border-grayBorder"
+          : "bg-lightBg2 border-lightBorder"
+      }`}
+    >
       <section className="items-center px-5">
         <div className="flex gap-4 items-center">
-          <div className="rounded-full bg-[#626262] w-2 h-2"></div>
-          <span className="text-grayTextContent text-xl sm:text-lg xs:text-sm font-bold">
+          <div
+            className={`rounded-full ${
+              !darkMode ? "bg-[#626262]" : "bg-red-400"
+            } w-2 h-2`}
+          ></div>
+          <span
+            className={`${
+              !darkMode ? "text-grayTextContent" : "text-lightText"
+            } text-xl sm:text-lg xs:text-sm font-bold`}
+          >
             More About Me
           </span>
         </div>
-        <span className="text-grayText text-justify text-base sm:text-sm leading-8">
+        <span
+          className={`${
+            !darkMode ? "text-grayText" : "text-lightBorder"
+          } text-justify text-base sm:text-sm leading-8`}
+        >
           A Front End Web Developer with experience and expertise in creating
           attractive and responsive user interfaces. Do you need a website that
           is not only functional but also visually stunning? I am ready to help
@@ -158,16 +160,37 @@ const about = () => {
           attention to detail.
         </span>
       </section>
-      <section className="flex justify-between bg-grayBorder rounded-xl shadow-xl border border-grayBorder p-5 flex-col gap-5 sm:gap-4">
+      <section
+        className={` ${
+          !darkMode
+            ? "bg-grayBg border-grayBorder"
+            : "bg-lightBg2 border-lightBorder"
+        } flex justify-between rounded-xl shadow-xl border p-5 flex-col gap-5 sm:gap-4`}
+      >
         <div className="flex gap-4 items-center">
-          <div className="rounded-full bg-[#626262] w-2 h-2"></div>
-          <span className="text-grayTextContent text-xl sm:text-lg xs:text-sm font-bold">
+          <div
+            className={`rounded-full ${
+              !darkMode ? "bg-[#626262]" : "bg-red-400"
+            } w-2 h-2`}
+          ></div>
+          <span
+            className={`${
+              !darkMode ? "text-grayTextContent" : "text-lightText"
+            } text-xl sm:text-lg xs:text-sm font-bold`}
+          >
             Journey Experience
           </span>
         </div>
         {office.map((key) => {
           return (
-            <div className="flex justify-between bg-[#373737] rounded-xl shadow-xl border border-grayBorder p-5 flex-col gap-5 xs:gap-4 ">
+            <div
+              key={key.name}
+              className={`flex justify-between ${
+                !darkMode
+                  ? "bg-[#373737] border-grayBorder"
+                  : "bg-lightBg2 border-lightBorder"
+              } rounded-xl shadow-xl border  p-5 flex-col gap-5 xs:gap-4`}
+            >
               <div className="flex justify-between text-white xs:flex-col">
                 <div className="flex gap-2 items-center">
                   {key.icon}
@@ -180,10 +203,18 @@ const about = () => {
                 </span>
               </div>
               <div className="flex gap-3 xs:flex-col">
-                <span className="text-grayText text-sm font-semibold bg-[#424242] rounded-xl py-1 px-3 w-fit">
+                <span
+                  className={`text-grayText text-sm font-semibold ${
+                    !darkMode ? "bg-[#424242]" : "bg-gray-100"
+                  } rounded-xl py-1 px-3 w-fit`}
+                >
                   {key.role}
                 </span>
-                <span className="text-grayText text-sm font-semibold bg-[#424242] rounded-xl py-1 px-3 w-fit">
+                <span
+                  className={`text-grayText text-sm font-semibold ${
+                    !darkMode ? "bg-[#424242]" : "bg-gray-100"
+                  } rounded-xl py-1 px-3 w-fit`}
+                >
                   {key.status}
                 </span>
               </div>
@@ -191,19 +222,24 @@ const about = () => {
           );
         })}
       </section>
-      <section className="flex justify-between bg-grayBorder rounded-xl shadow-xl border border-grayBorder p-5 flex-col gap-5 sm:gap-4">
-        {/* <div className="flex gap-4 items-center">
-          <div className="rounded-full bg-[#626262] w-2 h-2"></div>
-          <span className="text-grayTextContent text-xl xs:text-sm font-bold">
-            Skills
-          </span>
-        </div> */}
+      <section
+        className={`flex justify-between ${
+          !darkMode
+            ? "bg-grayBg border-grayBorder"
+            : "bg-lightBg2 border-lightBorder"
+        } rounded-xl shadow-xl border p-5 flex-col gap-5 sm:gap-4`}
+      >
         <div className="w-full flex flex-wrap gap-5 items-center justify-center">
           {stack.map((key) => {
             return (
               <Link
+                key={key.link}
                 to={key.link}
-                className="rounded-full p-3 bg-[#2C2C2C] border border-gray-700 shadow-2xl w-fit h-fit ease-in-out text-white"
+                className={`border ${
+                  !darkMode
+                    ? "bg-[#2C2C2C] border border-gray-700"
+                    : "bg-lightBg2 border-white"
+                } rounded-full p-3 shadow-2xl w-fit h-fit ease-in-out text-white`}
               >
                 {key.icon}
               </Link>
@@ -211,32 +247,50 @@ const about = () => {
           })}
         </div>
       </section>
-      <section className="flex justify-center items-center lg:bg-grayBorder lg:rounded-xl lg:shadow-xl lg:border lg:border-grayBorder p-5 flex-col gap-5 sm:gap-4">
-        <span className="text-white text-3xl font-bold">
+      <section
+        className={`${
+          !darkMode
+            ? "lg:bg-grayBorder lg:border-grayBorder"
+            : "lg:bg-lightBg2 lg:border-lightBorder"
+        } flex justify-center items-center  lg:rounded-xl lg:shadow-xl lg:border  p-5 flex-col gap-5 sm:gap-4`}
+      >
+        <span
+          className={`${
+            !darkMode ? "text-white" : "text-lightText"
+          }  text-3xl font-bold`}
+        >
           Let's Work Together.
         </span>
         <span className="text-grayText ext-base sm:text-sm">
           Creating your own or business website with me.
         </span>
         <div className="flex gap-3 mt-2">
-          <Button
-            className="border-none xs:text-sm"
-            icon={<BiSend className="text-[#8F8F8F]" />}
+          <button
+            className={`${
+              !darkMode ? "bg-[#2E2E2E]" : "bg-lightText"
+            } border-none xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md hover:shadow-xl hover:border`}
             onClick={() => window.open("mailto:oyojwork@gmail.com")}
           >
+            <BiSend
+              className={`${!darkMode ? "text-[#8f8f8f]" : "text-white"}`}
+            />
             Hire me
-          </Button>
-          <Button
-            className="bg-transparent border border-grayBorder xs:text-sm"
-            icon={<BiSolidFileBlank className="text-[#8F8F8F]" />}
+          </button>
+          <button
+            className={`bg-transparent ${
+              !darkMode ? "border-grayBorder" : "border-lightBorder"
+            } border xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md hover:shadow-xl hover:border`}
             onClick={() =>
               window.open(
                 "https://drive.google.com/file/d/1Zzl5JJBTmtMHhEteBrJMqJdBgLer9ZUQ/view?usp=drive_link"
               )
             }
           >
+            <BiSolidFileBlank
+              className={`${!darkMode ? "text-[#8f8f8f]" : "text-white"}`}
+            />
             My CV
-          </Button>
+          </button>
         </div>
       </section>
     </main>

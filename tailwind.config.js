@@ -18,6 +18,11 @@ module.exports = {
     },
     extend: {
       colors: {
+        lightBg: "#eae7dc",
+        lightBg2: "#d8c3a5 ",
+        lightText: "#e98074",
+        lightText2: "#e85a4f",
+        lightBorder: "#8e8d8a",
         grayText: "#8F8F8F",
         grayBg: "#212121",
         grayBorder: "#2A2A2A",

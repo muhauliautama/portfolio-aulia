@@ -135,7 +135,8 @@ body {
   background-color: #f7c002;
 }
 
-.icon-sidebarr:hover, .icon-sidebar:hover {
+.icon-sidebarr:hover,
+.icon-sidebar:hover {
   color: white;
   cursor: pointer;
 }
