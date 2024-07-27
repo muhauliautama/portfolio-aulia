@@ -2,7 +2,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import HomeContent from "@/pages/home";
 import AboutContent from "@/pages/about";
 import ProjectsContent from "@/pages/projects";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { DarkMode } from "@/context/DarkMode";
 
 const Root = () => {
