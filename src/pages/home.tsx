@@ -1,4 +1,4 @@
-import ImgPerson from "@/assets/kadal.png";
+import ImgPerson from "@/assets/rai2.jpeg";
 import {
   BiLogoLinkedin,
   BiLogoGithub,
@@ -10,6 +10,7 @@ import {
 } from "react-icons/bi";
 import Button from "@/components/Button";
 import { Link } from "react-router-dom";
+import {SplitText} from "@/components/Text";
 
 const sosmedLink = [
   {
@@ -51,7 +52,7 @@ const home = () => {
           </span>
         </div>
         <div className="rounded-full bg-[#263A2F] w-fit h-fit p-2 flex items-center gap-1">
-          <div className="rounded-full bg-green-500 w-2 h-2"></div>
+          <div className="rounded-full bg-green-500 w-2 h-2 animate-blink"></div>
           <span className="uppercase text-[#049753] text-xs px-2 sm:hidden">
             Available For Work
           </span>
@@ -95,12 +96,24 @@ const home = () => {
           </div>
         </div>
         <div className="hidden md:flex flex-col gap-2 justify-center items-center text-center my-12">
-          <div className="border border-grayBorder w-[160px] h-[160px] overflow-hidden rounded-full p-3 bg-[#2C2C2C]">
-            <img src={ImgPerson} alt="img" defaultValue={ImgPerson} />
+          <div className="border border-grayBorder w-[160px] h-[160px] overflow-hidden rounded-full bg-[#2C2C2C]">
+            <img
+              src={ImgPerson}
+              alt="img"
+              defaultValue={ImgPerson}
+              className="-mt-[27px]"
+            />
           </div>
-          <span className="text-white text-4xl font-bold my-3 sm:text-2xl">
-            I'm Airlangga
-          </span>
+          <SplitText
+            text="I'm Airlangga"
+            className="text-white text-4xl font-bold my-3 sm:text-2xl"
+            delay={150}
+            animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
+            animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
+            easing="easeOutCubic"
+            threshold={0.2}
+            rootMargin="-50px"
+          />
           <span className="text-grayText text-md sm:text-sm">
             Front End Web Developer from Malang, Indonesia.
           </span>

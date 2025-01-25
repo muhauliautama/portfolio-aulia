@@ -1,20 +1,4 @@
 import { Link } from "react-router-dom";
-// import htmlIcon from "@/assets/html.png";
-// import cssIcon from "@/assets/css.png";
-// import sassIcon from "@/assets/sass.png";
-// import jsIcon from "@/assets/js.png";
-// import tsIcon from "@/assets/ts.png";
-// import ciIcon from "@/assets/codeigniter.svg";
-// import laravelIcon from "@/assets/laravel.png";
-// import jqueryIcon from "@/assets/jquery.svg";
-// import reactIcon from "@/assets/react.png";
-// import nextIcon from "@/assets/nextjs.svg";
-// import reduxIcon from "@/assets/redux.svg";
-// import tailwindIcon from "@/assets/tailwind.png";
-// import bstIcon from "@/assets/bootstrap.svg";
-// import gitIcon from "@/assets/git.png";
-// import bunIcon from "@/assets/bun.png";
-// import figmaIcon from "@/assets/figma.png";
 import { BiSolidFileBlank, BiSend } from "react-icons/bi";
 import Button from "@/components/Button";
 import {
@@ -42,6 +26,8 @@ import {
   SiRedux,
   SiTailwindcss,
 } from "react-icons/si";
+import { AnimatedContent, FadeContent } from "@/components/Content";
+import { ShinyText } from "@/components/Text"
 
 const about = () => {
   const stack = [
@@ -104,7 +90,7 @@ const about = () => {
   ];
   const office = [
     {
-      name: "PT. AZLogistik Dot Com",
+      name: "muatmuat",
       year: "2022 - Now",
       role: "Front End Web Developer",
       icon: <TbCircleNumber1Filled className="xs:hidden" size={20} />,
@@ -149,7 +135,7 @@ const about = () => {
             More About Me
           </span>
         </div>
-        <span className="text-grayText text-justify text-base sm:text-sm leading-8">
+        <span className="text-grayText text-justify text-base sm:text-sm leading-8 sm:!leading-6 pt-2 block">
           A Front End Web Developer with experience and expertise in creating
           attractive and responsive user interfaces. Do you need a website that
           is not only functional but also visually stunning? I am ready to help
@@ -167,46 +153,58 @@ const about = () => {
         </div>
         {office.map((key) => {
           return (
-            <div className="flex justify-between bg-[#373737] rounded-xl shadow-xl border border-grayBorder p-5 flex-col gap-5 xs:gap-4 ">
-              <div className="flex justify-between text-white xs:flex-col">
-                <div className="flex gap-2 items-center">
-                  {key.icon}
-                  <span className="font-bold text-base sm:text-sm">
-                    {key.name}
+            <FadeContent
+              blur={true}
+              duration={1300}
+              easing="ease-out"
+              initialOpacity={0}
+            >
+              <div className="flex justify-between bg-[#373737] rounded-xl shadow-xl border border-grayBorder p-5 flex-col gap-5 xs:gap-4 ">
+                <div className="flex justify-between items-center text-white xs:flex-col">
+                  <div className="flex gap-2 items-center">
+                    <div className="w-5 h-5">{key.icon}</div>
+                    <span className="font-bold text-base sm:text-sm">
+                      {key.name}
+                    </span>
+                  </div>
+                  <span className="font-normal text-base sm:text-sm">
+                    {key.year}
                   </span>
                 </div>
-                <span className="font-normal text-base sm:text-sm">
-                  {key.year}
-                </span>
+                <div className="flex gap-3 xs:flex-col">
+                  <span className="text-grayText text-sm font-semibold bg-[#424242] rounded-xl py-1 px-3 w-fit">
+                    {key.role}
+                  </span>
+                  <span className="text-grayText text-sm font-semibold bg-[#424242] rounded-xl py-1 px-3 w-fit flex items-center">
+                    {key.status}
+                  </span>
+                </div>
               </div>
-              <div className="flex gap-3 xs:flex-col">
-                <span className="text-grayText text-sm font-semibold bg-[#424242] rounded-xl py-1 px-3 w-fit">
-                  {key.role}
-                </span>
-                <span className="text-grayText text-sm font-semibold bg-[#424242] rounded-xl py-1 px-3 w-fit">
-                  {key.status}
-                </span>
-              </div>
-            </div>
+            </FadeContent>
           );
         })}
       </section>
       <section className="flex justify-between bg-grayBorder rounded-xl shadow-xl border border-grayBorder p-5 flex-col gap-5 sm:gap-4">
-        {/* <div className="flex gap-4 items-center">
-          <div className="rounded-full bg-[#626262] w-2 h-2"></div>
-          <span className="text-grayTextContent text-xl xs:text-sm font-bold">
-            Skills
-          </span>
-        </div> */}
-        <div className="w-full flex flex-wrap gap-5 items-center justify-center">
+        <div className="w-full grid grid-cols-7 sm:flex sm:flex-wrap gap-5 items-center sm:justify-center justify-items-center">
           {stack.map((key) => {
             return (
-              <Link
-                to={key.link}
-                className="rounded-full p-3 bg-[#2C2C2C] border border-gray-700 shadow-2xl w-fit h-fit ease-in-out text-white"
+              <AnimatedContent
+                distance={150}
+                direction="vertical"
+                reverse={false}
+                config={{ tension: 80, friction: 20 }}
+                initialOpacity={0.2}
+                animateOpacity
+                scale={1.1}
+                threshold={0.2}
               >
-                {key.icon}
-              </Link>
+                <Link
+                  to={key.link}
+                  className="p-3 w-fit h-fit ease-in-out text-white flex items-center justify-center"
+                >
+                  {key.icon}
+                </Link>
+              </AnimatedContent>
             );
           })}
         </div>
@@ -215,9 +213,11 @@ const about = () => {
         <span className="text-white text-3xl font-bold">
           Let's Work Together.
         </span>
-        <span className="text-grayText ext-base sm:text-sm">
-          Creating your own or business website with me.
-        </span>
+        <ShinyText
+          text="Creating your own or business website with me."
+          speed={4}
+          className="text-grayText text-base sm:text-sm"
+        />
         <div className="flex gap-3 mt-2">
           <Button
             className="border-none xs:text-sm"
