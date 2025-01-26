@@ -1,23 +1,55 @@
+import { DecryptedText } from "@/components/Text";
 import { BiLogoGithub, BiCodeAlt } from "react-icons/bi";
-import Button from "@/components/Button";
 
-const projects = () => {
+const projects = ({ dark }: { dark: any }) => {
+  const darkMode = dark;
   return (
-    <main className="ff-1 flex flex-col h-fit text-start gap-3 px-3 w-auto bg-grayBg rounded-xl shadow-xl py-5 my-2 border border-grayBorder xs:px-1">
-      <section className="flex justify-center items-center lg:bg-grayBorder lg:rounded-xl lg:shadow-xl lg:border lg:border-grayBorder p-5 flex-col gap-5 sm:gap-4">
-        <BiCodeAlt size={100} className="text-white" />
-        <span className="text-white text-base text-center font-semibold w-[500px] md:w-auto">
+    <main
+      className={`ff-1 flex flex-col h-fit text-start gap-3 px-3 w-auto  rounded-xl shadow-xl py-5 my-2 border xs:px-1 ${
+        !darkMode
+          ? "bg-grayBg border-grayBorder"
+          : "bg-lightBg2 border-lightBorder"
+      }`}
+    >
+      <section
+        className={`${
+          !darkMode
+            ? "lg:bg-grayBorder lg:border-grayBorder"
+            : "lg:bg-lightBg2 lg:border-lightBorder"
+        } flex justify-center items-center lg:rounded-xl lg:shadow-xl lg:border p-5 flex-col gap-5 sm:gap-4`}
+      >
+        <BiCodeAlt
+          size={100}
+          className={`${!darkMode ? "text-white" : "text-lightText"}`}
+        />
+        <div className="w-[500px] md:w-auto">
+          <DecryptedText
+            text={`I'm working on a list of projects, please be patient. In the meantime, you can see a some of projects that I have already placed in the GitHub repositories`}
+            animateOn="view"
+            revealDirection="start"
+            speed={20}
+            maxIterations={50}
+            sequential
+            parentClassName="text-white text-base font-semibold text-center"
+            className="text-white text-base font-semibold text-center"
+          />
+        </div>
+        {/* <span className="text-white text-base text-center font-semibold w-[500px] md:w-auto">
           I'm working on a list of projects, please be patient. In the meantime,
           you can see a some of projects that I have already placed in the
           GitHub repositories
-        </span>
-        <Button
-          className="border-none xs:text-sm"
-          icon={<BiLogoGithub className="text-[#8F8F8F]" />}
+        </span> */}
+        <button
+          className={`${
+            !darkMode ? "bg-[#2E2E2E]" : "bg-lightText"
+          } border-none xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md hover:shadow-xl hover:border`}
           onClick={() => window.open("https://github.com/ajyoor")}
         >
+          <BiLogoGithub
+            className={`${!darkMode ? "text-[#8f8f8f]" : "text-white"}`}
+          />
           My Github
-        </Button>
+        </button>
       </section>
     </main>
   );
