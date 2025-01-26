@@ -265,7 +265,7 @@ const home = ({ dark }: { dark: any }) => {
             Follow Me
           </span>
         </div>
-        <div className="flex flex-wrap gap-3 items-center sm:justify-center sm:items-center sm:gap-3 xs:gap-4">
+        <div className="flex flex-wrap gap-3 items-center sm:justify-evenly sm:items-center sm:gap-2 xs:gap-4">
           {sosmedLink.map((key) => {
             return (
               <Link

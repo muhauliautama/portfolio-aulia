@@ -182,9 +182,10 @@ export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   // ----- Layout / Style Props -----
   width = "30rem",
   maxHeight = "100%",
-  negativeMargin = "-0.5em",
+  negativeMargin,
   // ----- Items Prop -----
   items = [],
+  itemMinHeight,
   // ----- Tilt Props -----
   isTilted = false,
   tiltDirection = "left",
@@ -333,10 +334,10 @@ export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
           <div
             className="flex items-center justify-center p-4 text-xl font-semibold text-center border-2 border-white rounded-[15px] select-none box-border relative"
             key={i}
-            // style={{
-            //   height: `${itemMinHeight}px`,
-            //   marginTop: negativeMargin,
-            // }}
+            style={{
+              height: `${itemMinHeight}px`,
+              marginTop: negativeMargin,
+            }}
           >
             {item.content}
           </div>
