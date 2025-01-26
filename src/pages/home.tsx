@@ -7,6 +7,7 @@ import {
   BiLogoTwitter,
   BiSolidFileBlank,
   BiSend,
+  BiLogoSpotify,
 } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { SplitText } from "@/components/Text";
@@ -25,16 +26,21 @@ const sosmedLink = [
   },
   {
     id: 3,
+    icon: <BiLogoSpotify className="text-white" size={26} />,
+    link: "https://open.spotify.com/user/airlan99a?si=a0d539b3682f49b1",
+  },
+  {
+    id: 4,
     icon: <BiLogoGithub className="text-white" size={26} />,
     link: "https://github.com/ajyoor",
   },
   {
-    id: 4,
+    id: 5,
     icon: <BiLogoLinkedin className="text-white" size={26} />,
     link: "https://www.linkedin.com/in/airlangga-joyonegoro-97037024a/",
   },
   {
-    id: 5,
+    id: 6,
     icon: <BiLogoGmail className="text-white" size={26} />,
     link: "mailto:oyojwork@gmail.com",
   },
@@ -69,7 +75,7 @@ const home = ({ dark }: { dark: any }) => {
         <div
           className={`rounded-full ${
             !darkMode ? "bg-[#263A2F]" : "bg-lightBg"
-          } w-fit h-fit p-2 flex items-center gap-1`}
+          } w-fit h-fit sm:p-2 pl-[17px] p-2 flex items-center gap-1`}
         >
           <div className="rounded-full bg-green-500 w-2 h-2 animate-blink"></div>
           <span className="uppercase text-[#049753] text-xs px-2 sm:hidden">
@@ -259,7 +265,7 @@ const home = ({ dark }: { dark: any }) => {
             Follow Me
           </span>
         </div>
-        <div className="flex gap-3 items-center sm:justify-center sm:items-center sm:gap-6 xs:gap-4">
+        <div className="flex flex-wrap gap-3 items-center sm:justify-center sm:items-center sm:gap-3 xs:gap-4">
           {sosmedLink.map((key) => {
             return (
               <Link

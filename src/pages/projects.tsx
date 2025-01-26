@@ -1,5 +1,106 @@
-import { DecryptedText } from "@/components/Text";
-import { BiLogoGithub, BiCodeAlt } from "react-icons/bi";
+import {
+  AnimatedContent,
+  InfiniteScroll,
+  SpotlightCard,
+} from "@/components/Content";
+import { FaThreads } from "react-icons/fa6";
+import {
+  IoGameController,
+  IoNewspaperOutline,
+  IoLogoJavascript,
+} from "react-icons/io5";
+import { FaReact, FaImdb, FaSpotify, FaQuran } from "react-icons/fa";
+import {
+  SiTypescript,
+  SiNextdotjs,
+  SiRedux,
+  SiTailwindcss,
+} from "react-icons/si";
+import { TbJson } from "react-icons/tb";
+import Game from "@/assets/game.png";
+import Twitter from "@/assets/twitter.png";
+import Quran from "@/assets/quarn.png";
+import News from "@/assets/news.png";
+import { Iklan } from "./about";
+
+const items = [
+  { content: <img src={Game} className="rounded-xl" /> },
+  { content: <img src={Twitter} className="rounded-xl" /> },
+  { content: <img src={News} className="rounded-xl" /> },
+  { content: <img src={Quran} className="rounded-xl" /> },
+];
+
+const cardItems = [
+  {
+    icon: <FaQuran size={32} color="#c0c0c0" />,
+    title: "Quran PRO Cloned",
+    description: [
+      <SiTypescript size={20} color="#c0c0c0" />,
+      <SiNextdotjs size={20} color="#c0c0c0" />,
+      <SiTailwindcss size={20} color="#c0c0c0" />,
+      <SiRedux size={20} color="#c0c0c0" />,
+      <TbJson size={20} color="#c0c0c0" />,
+    ],
+    link: "#",
+  },
+  {
+    icon: <FaThreads size={32} color="#c0c0c0" />,
+    title: "Threads Cloned",
+    description: [
+      <SiTypescript size={20} color="#c0c0c0" />,
+      <SiNextdotjs size={20} color="#c0c0c0" />,
+      <SiTailwindcss size={20} color="#c0c0c0" />,
+      <SiRedux size={20} color="#c0c0c0" />,
+    ],
+    link: "#",
+  },
+  {
+    icon: <FaSpotify size={32} color="#c0c0c0" />,
+    title: "Spotify Cloned",
+    description: [
+      <IoLogoJavascript size={20} color="#c0c0c0" />,
+      <SiNextdotjs size={20} color="#c0c0c0" />,
+      <SiTailwindcss size={20} color="#c0c0c0" />,
+      <SiRedux size={20} color="#c0c0c0" />,
+      <TbJson size={20} color="#c0c0c0" />,
+    ],
+    link: "#",
+  },
+  {
+    icon: <FaImdb size={32} color="#c0c0c0" />,
+    title: "IMDB Cloned",
+    description: [
+      <IoLogoJavascript size={20} color="#c0c0c0" />,
+      <SiNextdotjs size={20} color="#c0c0c0" />,
+      <SiTailwindcss size={20} color="#c0c0c0" />,
+      <SiRedux size={20} color="#c0c0c0" />,
+      <TbJson size={20} color="#c0c0c0" />,
+    ],
+    link: "#",
+  },
+  {
+    icon: <IoGameController size={32} color="#c0c0c0" />,
+    title: "Voucher Game",
+    description: [
+      <IoLogoJavascript size={20} color="#c0c0c0" />,
+      <SiNextdotjs size={20} color="#c0c0c0" />,
+      <SiTailwindcss size={20} color="#c0c0c0" />,
+      <SiRedux size={20} color="#c0c0c0" />,
+    ],
+    link: "#",
+  },
+  {
+    icon: <IoNewspaperOutline size={32} color="#c0c0c0" />,
+    title: "News Portal",
+    description: [
+      <IoLogoJavascript size={20} color="#c0c0c0" />,
+      <FaReact size={20} color="#c0c0c0" />,
+      <SiTailwindcss size={20} color="#c0c0c0" />,
+      <TbJson size={20} color="#c0c0c0" />,
+    ],
+    link: "#",
+  },
+];
 
 const projects = ({ dark }: { dark: any }) => {
   const darkMode = dark;
@@ -11,46 +112,98 @@ const projects = ({ dark }: { dark: any }) => {
           : "bg-lightBg2 border-lightBorder"
       }`}
     >
+      <section className="items-center px-5">
+        <div className="flex gap-4 items-center">
+          <div
+            className={`rounded-full ${
+              !darkMode ? "bg-[#626262]" : "bg-red-400"
+            } w-2 h-2`}
+          ></div>
+          <span
+            className={`${
+              !darkMode ? "text-grayTextContent" : "text-lightText"
+            } text-xl sm:text-lg xs:text-sm font-bold`}
+          >
+            Showcase
+          </span>
+        </div>
+        <span
+          className={`${
+            !darkMode ? "text-grayText" : "text-lightBorder"
+          } text-justify text-base sm:text-sm leading-8 sm:!leading-6 pt-2 block`}
+        >
+          Here are some of my works that I can show in general (because I am
+          also bound by work that I certainly cannot publish), mostly include
+          recreate some famous websites that you can see and clone through my
+          GitHub site.
+        </span>
+      </section>
+
       <section
-        className={`${
+        className={` ${
           !darkMode
-            ? "lg:bg-grayBorder lg:border-grayBorder"
-            : "lg:bg-lightBg2 lg:border-lightBorder"
-        } flex justify-center items-center lg:rounded-xl lg:shadow-xl lg:border p-5 flex-col gap-5 sm:gap-4`}
+            ? "bg-grayBg border-grayBorder"
+            : "bg-lightBg2 border-lightBorder"
+        } flex justify-between rounded-xl shadow-xl border p-5 flex-col gap-5 sm:gap-4`}
       >
-        <BiCodeAlt
-          size={100}
-          className={`${!darkMode ? "text-white" : "text-lightText"}`}
-        />
-        <div className="w-[500px] md:w-auto">
-          <DecryptedText
-            text={`I'm working on a list of projects, please be patient. In the meantime, you can see a some of projects that I have already placed in the GitHub repositories`}
-            animateOn="view"
-            revealDirection="start"
-            speed={20}
-            maxIterations={50}
-            sequential
-            parentClassName="text-white text-base font-semibold text-center"
-            className="text-white text-base font-semibold text-center"
+        <div className="relative h-[250px] rounded-md">
+          <InfiniteScroll
+            items={items}
+            isTilted={true}
+            tiltDirection="left"
+            autoplay={true}
+            autoplaySpeed={0.1}
+            autoplayDirection="down"
+            pauseOnHover={true}
           />
         </div>
-        {/* <span className="text-white text-base text-center font-semibold w-[500px] md:w-auto">
-          I'm working on a list of projects, please be patient. In the meantime,
-          you can see a some of projects that I have already placed in the
-          GitHub repositories
-        </span> */}
-        <button
-          className={`${
-            !darkMode ? "bg-[#2E2E2E]" : "bg-lightText"
-          } border-none xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md hover:shadow-xl hover:border`}
-          onClick={() => window.open("https://github.com/ajyoor")}
+        <AnimatedContent
+          distance={150}
+          direction="vertical"
+          reverse={false}
+          config={{ tension: 80, friction: 20 }}
+          initialOpacity={0.2}
+          animateOpacity
+          scale={1.1}
+          threshold={0.2}
         >
-          <BiLogoGithub
-            className={`${!darkMode ? "text-[#8f8f8f]" : "text-white"}`}
-          />
-          My Github
-        </button>
+          <div className="grid grid-cols-2 sm:flex flex-wrap gap-4">
+            {cardItems.map((key, idx) => {
+              return (
+                <SpotlightCard
+                  key={idx}
+                  className={`flex flex-col gap-1 sm:w-full ${
+                    darkMode && "!bg-lightBg2 !border-lightBorder"
+                  }`}
+                  spotlightColor="rgba(0, 229, 255, 0.2)"
+                >
+                  <div className="flex items-center gap-4">
+                    {key.icon}
+                    <span
+                      className={`${
+                        !darkMode ? "text-grayTextContent" : "text-lightText"
+                      } text-xl sm:text-lg xs:text-sm font-bold`}
+                    >
+                      {key.title}
+                    </span>
+                  </div>
+                  <p
+                    className={`${
+                      !darkMode ? "text-grayText" : "text-lightBorder"
+                    } italic text-justify text-sm leading-8 sm:!leading-6 pt-2 block`}
+                  >
+                    made with :{" "}
+                    <div className="flex gap-3 sm:pt-1">
+                      {key.description.map((ky) => ky)}
+                    </div>
+                  </p>
+                </SpotlightCard>
+              );
+            })}
+          </div>
+        </AnimatedContent>
       </section>
+      <Iklan darkMode={darkMode} />
     </main>
   );
 };

@@ -259,57 +259,64 @@ const about = ({ dark }: { dark: any }) => {
           })}
         </div>
       </section>
-      <section
-        className={`${
-          !darkMode
-            ? "lg:border-none lg:shadow-none"
-            : "lg:bg-lightBg2 lg:border-lightBorder"
-        } flex justify-center items-center  lg:rounded-xl lg:shadow-xl lg:border  p-5 flex-col gap-5 sm:gap-4`}
-      >
-        <span
-          className={`${
-            !darkMode ? "text-white" : "text-lightText"
-          }  text-3xl font-bold`}
-        >
-          Let's Work Together.
-        </span>
-        <ShinyText
-          text="Creating your own or business website with me."
-          speed={3}
-          disabled={false}
-          className="text-base sm:text-sm"
-        />
-        <div className="flex gap-3 mt-2">
-          <button
-            className={`${
-              !darkMode ? "bg-[#2E2E2E]" : "bg-lightText"
-            } border-none xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md hover:shadow-xl hover:border`}
-            onClick={() => window.open("mailto:oyojwork@gmail.com")}
-          >
-            <BiSend
-              className={`${!darkMode ? "text-[#8f8f8f]" : "text-white"}`}
-            />
-            Hire me
-          </button>
-          <button
-            className={`bg-transparent ${
-              !darkMode ? "border-grayBorder" : "border-lightBorder"
-            } border xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md hover:shadow-xl hover:border`}
-            onClick={() =>
-              window.open(
-                "https://drive.google.com/file/d/1Zzl5JJBTmtMHhEteBrJMqJdBgLer9ZUQ/view?usp=drive_link"
-              )
-            }
-          >
-            <BiSolidFileBlank
-              className={`${!darkMode ? "text-[#8f8f8f]" : "text-white"}`}
-            />
-            My CV
-          </button>
-        </div>
-      </section>
+      <Iklan darkMode={darkMode} />
     </main>
   );
 };
 
 export default about;
+
+export const Iklan = ({ darkMode }: { darkMode: boolean }) => {
+  return (
+    <section
+      className={`${
+        !darkMode
+          ? "lg:border-none shadow-none"
+          : "lg:bg-lightBg2 lg:border-lightBorder"
+      } flex justify-center items-center lg:rounded-xl lg:shadow-xl lg:border  p-5 flex-col gap-5 sm:gap-4`}
+      style={{ boxShadow: "none" }}
+    >
+      <span
+        className={`${
+          !darkMode ? "text-white" : "text-lightText"
+        }  text-3xl font-bold`}
+      >
+        Let's Work Together.
+      </span>
+      <ShinyText
+        text="Creating your own or business website with me."
+        speed={3}
+        disabled={false}
+        className="text-base sm:text-sm"
+      />
+      <div className="flex gap-3 mt-2">
+        <button
+          className={`${
+            !darkMode ? "bg-[#2E2E2E]" : "bg-lightText"
+          } border-none xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md hover:shadow-xl hover:border`}
+          onClick={() => window.open("mailto:oyojwork@gmail.com")}
+        >
+          <BiSend
+            className={`${!darkMode ? "text-[#8f8f8f]" : "text-white"}`}
+          />
+          Hire me
+        </button>
+        <button
+          className={`bg-transparent ${
+            !darkMode ? "border-grayBorder" : "border-lightBorder"
+          } border xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md hover:shadow-xl hover:border`}
+          onClick={() =>
+            window.open(
+              "https://drive.google.com/file/d/1Zzl5JJBTmtMHhEteBrJMqJdBgLer9ZUQ/view?usp=drive_link"
+            )
+          }
+        >
+          <BiSolidFileBlank
+            className={`${!darkMode ? "text-[#8f8f8f]" : "text-white"}`}
+          />
+          My CV
+        </button>
+      </div>
+    </section>
+  );
+};
