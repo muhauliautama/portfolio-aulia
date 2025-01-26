@@ -147,6 +147,8 @@ const home = ({ dark }: { dark: any }) => {
               alt="img"
               defaultValue={ImgPerson}
               className="scale-[3] mt-[50px] -ml-[18px]"
+              srcSet={ImgPerson}
+              loading="lazy"
             />
           </div>
         </div>
@@ -163,6 +165,8 @@ const home = ({ dark }: { dark: any }) => {
               alt="img"
               defaultValue={ImgPerson}
               className="scale-[3] mt-[50px] -ml-[18px]"
+              srcSet={ImgPerson}
+              loading="lazy"
             />
           </div>
           <SplitText
