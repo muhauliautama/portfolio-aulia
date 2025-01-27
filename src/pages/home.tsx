@@ -1,4 +1,4 @@
-import ImgPerson from "@/assets/sangar.png";
+import ImgPerson from "@/assets/sangar.jpeg";
 import {
   BiLogoLinkedin,
   BiLogoGithub,
@@ -152,7 +152,7 @@ const home = ({ dark }: { dark: any }) => {
               src={ImgPerson}
               alt="img"
               defaultValue={ImgPerson}
-              className="scale-[3] mt-[50px] -ml-[18px]"
+              className="scale-[1.5] mt-[18px]"
               srcSet={ImgPerson}
               loading="lazy"
             />
@@ -170,7 +170,7 @@ const home = ({ dark }: { dark: any }) => {
               src={ImgPerson}
               alt="img"
               defaultValue={ImgPerson}
-              className="scale-[3] mt-[50px] -ml-[18px]"
+              className="scale-[1.5] mt-[18px]"
               srcSet={ImgPerson}
               loading="lazy"
             />
@@ -295,7 +295,7 @@ const home = ({ dark }: { dark: any }) => {
             !darkMode ? "text-grayTextContent" : "text-white"
           } text-xs font-thin`}
         >
-          @{yearCount} Last Updated - Airlangga Joyonegoro
+          @{yearCount} Last Updated
         </span>
       </section>
     </main>

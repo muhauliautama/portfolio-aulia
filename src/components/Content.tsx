@@ -1,4 +1,10 @@
-import React, { useRef, useEffect, useState, ReactNode, MouseEvent  } from "react";
+import React, {
+  useRef,
+  useEffect,
+  useState,
+  ReactNode,
+  MouseEvent,
+} from "react";
 import {
   useSpring,
   animated,
@@ -182,10 +188,10 @@ export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   // ----- Layout / Style Props -----
   width = "30rem",
   maxHeight = "100%",
-  negativeMargin,
+  negativeMargin = "-0.5em",
   // ----- Items Prop -----
   items = [],
-  itemMinHeight,
+  itemMinHeight = 150,
   // ----- Tilt Props -----
   isTilted = false,
   tiltDirection = "left",
@@ -194,11 +200,11 @@ export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   autoplaySpeed = 0.5,
   autoplayDirection = "down",
   pauseOnHover = false,
-}) => {
+}: InfiniteScrollProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const getTiltTransform = (): string => {
+  const getTiltTransform = () => {
     if (!isTilted) return "none";
     return tiltDirection === "left"
       ? "rotateX(20deg) rotateZ(-20deg) skewX(20deg)"
@@ -232,15 +238,18 @@ export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
       target: container,
       type: "wheel,touch,pointer",
       preventDefault: true,
-      onPress: ({ target }) => {
-        (target as HTMLElement).style.cursor = "grabbing";
+      onPress: (self) => {
+        (self.target as HTMLElement).style.cursor = "grabbing";
       },
-      onRelease: ({ target }) => {
-        (target as HTMLElement).style.cursor = "grab";
+      onRelease: (self) => {
+        (self.target as HTMLElement).style.cursor = "grab";
       },
-      onChange: ({ deltaY, isDragging, event }) => {
-        const d = (event as WheelEvent).type === "wheel" ? -deltaY : deltaY;
-        const distance = isDragging ? d * 5 : d * 10;
+      onChange: (self) => {
+        const d =
+          (self.event as WheelEvent).type === "wheel"
+            ? -self.deltaY
+            : self.deltaY;
+        const distance = self.isDragging ? d * 5 : d * 10;
         divItems.forEach((child) => {
           gsap.to(child, {
             duration: 0.5,
@@ -313,7 +322,7 @@ export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
 
   return (
     <div
-      className="relative flex items-center justify-center w-full overflow-hidden overscroll-none border-t-2 border-b-2 border-t-dotted border-b-dotted border-transparent"
+      className="relative flex items-center justify-center w-full overflow-hidden overscroll-none"
       ref={wrapperRef}
       style={{ maxHeight }}
     >
@@ -332,7 +341,7 @@ export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
       >
         {items.map((item, i) => (
           <div
-            className="flex items-center justify-center p-4 text-xl font-semibold text-center border-2 border-white rounded-[15px] select-none box-border relative"
+            className="flex items-center justify-center p-4 text-xl font-semibold text-center border border-white rounded-[15px] select-none box-border relative"
             key={i}
             style={{
               height: `${itemMinHeight}px`,

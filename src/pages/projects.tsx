@@ -80,7 +80,7 @@ const cardItems = [
   },
   {
     icon: <IoGameController size={32} color="#c0c0c0" />,
-    title: "Voucher Game",
+    title: "Game Voucher",
     description: [
       <IoLogoJavascript size={20} color="#c0c0c0" />,
       <SiNextdotjs size={20} color="#c0c0c0" />,
@@ -146,15 +146,16 @@ const projects = ({ dark }: { dark: any }) => {
             : "bg-lightBg2 border-lightBorder"
         } flex justify-between rounded-xl shadow-xl border p-5 flex-col gap-5 sm:gap-4`}
       >
-        <div className="relative h-[250px] rounded-md">
+        <div style={{ height: "200px", position: "relative" }}>
           <InfiniteScroll
             items={items}
             isTilted={true}
-            tiltDirection="left"
+            // tiltDirection="left"
             autoplay={true}
-            autoplaySpeed={0.1}
+            autoplaySpeed={0.2}
             autoplayDirection="down"
             pauseOnHover={true}
+            negativeMargin="-2rem"
           />
         </div>
         <AnimatedContent
@@ -182,7 +183,7 @@ const projects = ({ dark }: { dark: any }) => {
                     <span
                       className={`${
                         !darkMode ? "text-grayTextContent" : "text-lightText"
-                      } text-xl sm:text-lg xs:text-sm font-bold`}
+                      } text-xl sm:text-lg xs:text-sm font-semibold`}
                     >
                       {key.title}
                     </span>
