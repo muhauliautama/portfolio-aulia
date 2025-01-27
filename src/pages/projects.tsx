@@ -173,7 +173,7 @@ const projects = ({ dark }: { dark: any }) => {
               return (
                 <SpotlightCard
                   key={idx}
-                  className={`flex flex-col gap-1 sm:w-full ${
+                  className={`flex flex-col gap-1 sm:w-full !rounded-xl ${
                     darkMode && "!bg-lightBg2 !border-lightBorder"
                   }`}
                   spotlightColor="rgba(0, 229, 255, 0.2)"
