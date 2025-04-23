@@ -1,8 +1,4 @@
-import {
-  AnimatedContent,
-  InfiniteScroll,
-  SpotlightCard,
-} from "@/components/Content";
+import { AnimatedContent, SpotlightCard } from "@/components/Content";
 import { FaThreads } from "react-icons/fa6";
 import {
   IoGameController,
@@ -23,12 +19,25 @@ import Quran from "@/assets/quarn.png";
 import News from "@/assets/news.png";
 import { Iklan } from "./about";
 
-const items = [
-  { content: <img src={Game} className="rounded-xl" /> },
-  { content: <img src={Twitter} className="rounded-xl" /> },
-  { content: <img src={News} className="rounded-xl" /> },
-  { content: <img src={Quran} className="rounded-xl" /> },
-];
+const ImageContainer = ({
+  src,
+  alt,
+  darkMode,
+}: {
+  src: string;
+  alt: string;
+  darkMode: boolean;
+}) => (
+  <div
+    className={`flex flex-col gap-1 !rounded-xl p-3 relative overflow-hidden`}
+  >
+    <img
+      src={src}
+      className="w-[500px] sm:w-[300px] h-[250px] sm:h-[180px] object-contain mx-auto"
+      alt={alt}
+    />
+  </div>
+);
 
 const cardItems = [
   {
@@ -104,15 +113,26 @@ const cardItems = [
 
 const projects = ({ dark }: { dark: any }) => {
   const darkMode = dark;
+
+  const items = [
+    { content: <ImageContainer src={Game} alt="Game" darkMode={darkMode} /> },
+    {
+      content: (
+        <ImageContainer src={Twitter} alt="Twitter" darkMode={darkMode} />
+      ),
+    },
+    { content: <ImageContainer src={News} alt="News" darkMode={darkMode} /> },
+    { content: <ImageContainer src={Quran} alt="Quran" darkMode={darkMode} /> },
+  ];
+
   return (
     <main
       className={`ff-1 flex flex-col h-fit text-start gap-3 px-3 w-auto  rounded-xl shadow-xl py-5 my-2 border xs:px-1 ${
-        !darkMode
-          ? "bg-grayBg border-grayBorder"
-          : "bg-lightBg2 border-lightBorder"
-      }`}
+        !darkMode ? "bg-grayBg border-grayBorder" : "bg-lightBg2 border-white"
+      } relative overflow-hidden`}
     >
-      <section className="items-center px-5">
+      {/* description content */}
+      <section className="items-center px-2">
         <div className="flex gap-4 items-center">
           <div
             className={`rounded-full ${
@@ -129,7 +149,7 @@ const projects = ({ dark }: { dark: any }) => {
         </div>
         <span
           className={`${
-            !darkMode ? "text-grayText" : "text-lightBorder"
+            !darkMode ? "text-grayText" : "text-white"
           } text-justify text-base sm:text-sm leading-8 sm:!leading-6 pt-2 block`}
         >
           Here are some of my works that I can show in general (because I am
@@ -139,24 +159,24 @@ const projects = ({ dark }: { dark: any }) => {
         </span>
       </section>
 
+      {/* showcase content */}
       <section
         className={` ${
-          !darkMode
-            ? "bg-grayBg border-grayBorder"
-            : "bg-lightBg2 border-lightBorder"
+          !darkMode ? "bg-grayBg border-grayBorder" : "bg-lightBg2 border-white"
         } flex justify-between rounded-xl shadow-xl border p-5 flex-col gap-5 sm:gap-4`}
       >
-        <div style={{ height: "200px", position: "relative" }}>
-          <InfiniteScroll
-            items={items}
-            isTilted={true}
-            // tiltDirection="left"
-            autoplay={true}
-            autoplaySpeed={0.2}
-            autoplayDirection="down"
-            pauseOnHover={true}
-            negativeMargin="-2rem"
-          />
+        <div
+          className={`h-[250px] sm:h-[180px] relative overflow-hidden border rounded-xl ${
+            !darkMode ? "border-grayBorder" : "border-lightBorder bg-lightBg"
+          }`}
+        >
+          <div className="absolute w-full animate-scroll group-hover:[animation-play-state:paused]">
+            {[...items, ...items].map((item, index) => (
+              <div key={index} className="w-full h-[250px] sm:h-[180px]">
+                {item.content}
+              </div>
+            ))}
+          </div>
         </div>
         <AnimatedContent
           distance={150}
@@ -174,7 +194,7 @@ const projects = ({ dark }: { dark: any }) => {
                 <SpotlightCard
                   key={idx}
                   className={`flex flex-col gap-1 sm:w-full !rounded-xl ${
-                    darkMode && "!bg-lightBg2 !border-lightBorder"
+                    darkMode && "!bg-lightBg !border-lightBorder"
                   }`}
                   spotlightColor="rgba(0, 229, 255, 0.2)"
                 >
@@ -204,6 +224,8 @@ const projects = ({ dark }: { dark: any }) => {
           </div>
         </AnimatedContent>
       </section>
+
+      {/* iklan content */}
       <Iklan darkMode={darkMode} />
     </main>
   );

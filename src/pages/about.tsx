@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { BiSolidFileBlank, BiSend } from "react-icons/bi";
 import {
+  TbCircleFilled,
   TbCircleNumber1Filled,
   TbCircleNumber2Filled,
   TbCircleNumber3Filled,
@@ -25,7 +26,7 @@ import {
   SiRedux,
   SiTailwindcss,
 } from "react-icons/si";
-import { AnimatedContent, FadeContent } from "@/components/Content";
+import { AnimatedContent } from "@/components/Content";
 import { ShinyText } from "@/components/Text";
 
 const about = ({ dark }: { dark: any }) => {
@@ -89,8 +90,15 @@ const about = ({ dark }: { dark: any }) => {
   ];
   const office = [
     {
+      name: "Komunal Indonesia",
+      year: "2025 - Now",
+      role: "Software Engineer",
+      icon: <TbCircleFilled className="xs:hidden" size={20} />,
+      status: "On Probation",
+    },
+    {
       name: "muatmuat",
-      year: "2022 - Now",
+      year: "2022 - 2025",
       role: "Front End Web Developer",
       icon: <TbCircleNumber1Filled className="xs:hidden" size={20} />,
       status: "Fulltime",
@@ -128,10 +136,8 @@ const about = ({ dark }: { dark: any }) => {
 
   return (
     <main
-      className={`ff-1 flex flex-col h-fit text-start gap-3 px-3 w-auto rounded-xl shadow-xl py-5 my-2 border xs:px-1 ${
-        !darkMode
-          ? "bg-grayBg border-grayBorder"
-          : "bg-lightBg2 border-lightBorder"
+      className={`ff-1 flex flex-col h-fit text-start gap-3 w-full rounded-xl shadow-xl py-5 border xs:px-1 ${
+        !darkMode ? "bg-grayBg border-grayBorder" : "bg-lightBg2 border-white"
       }`}
     >
       <section className="items-center px-5">
@@ -151,7 +157,7 @@ const about = ({ dark }: { dark: any }) => {
         </div>
         <span
           className={`${
-            !darkMode ? "text-grayText" : "text-lightBorder"
+            !darkMode ? "text-grayText" : "text-white"
           } text-justify text-base sm:text-sm leading-8 sm:!leading-6 pt-2 block`}
         >
           A Front End Web Developer with experience and expertise in creating
@@ -163,10 +169,8 @@ const about = ({ dark }: { dark: any }) => {
         </span>
       </section>
       <section
-        className={` ${
-          !darkMode
-            ? "bg-grayBg border-grayBorder"
-            : "bg-lightBg2 border-lightBorder"
+        className={`mx-3 ${
+          !darkMode ? "bg-grayBg border-grayBorder" : "bg-lightBg2 border-white"
         } flex justify-between rounded-xl shadow-xl border p-5 flex-col gap-5 sm:gap-4`}
       >
         <div className="flex gap-4 items-center">
@@ -185,24 +189,38 @@ const about = ({ dark }: { dark: any }) => {
         </div>
         {office.map((key) => {
           return (
-            <FadeContent
-              blur={true}
-              duration={1300}
-              easing="ease-out"
-              initialOpacity={0}
+            <AnimatedContent
+              distance={150}
+              direction="vertical"
+              reverse={false}
+              config={{ tension: 80, friction: 20 }}
+              initialOpacity={0.2}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
             >
               <div
                 key={key.name}
                 className={`flex justify-between ${
                   !darkMode
                     ? "bg-[#373737] border-grayBorder"
-                    : "bg-lightBg2 border-lightBorder"
+                    : "bg-lightBg border-lightBorder"
                 } flex justify-between bg-[#373737] rounded-xl shadow-xl border border-grayBorder p-5 flex-col gap-5 xs:gap-4`}
               >
                 <div className="flex justify-between items-center text-white xs:flex-col">
                   <div className="flex gap-2 items-center">
-                    <div className="w-5 h-5">{key.icon}</div>
-                    <span className="font-bold text-base sm:text-sm">
+                    <div
+                      className={`w-5 h-5 ${
+                        !darkMode ? "text-white" : "text-lightText"
+                      }`}
+                    >
+                      {key.icon}
+                    </div>
+                    <span
+                      className={`${
+                        !darkMode ? "text-white" : "text-lightText"
+                      } font-bold text-base sm:text-sm`}
+                    >
                       {key.name}
                     </span>
                   </div>
@@ -227,15 +245,13 @@ const about = ({ dark }: { dark: any }) => {
                   </span>
                 </div>
               </div>
-            </FadeContent>
+            </AnimatedContent>
           );
         })}
       </section>
       <section
-        className={`flex justify-between ${
-          !darkMode
-            ? "bg-grayBg border-grayBorder"
-            : "bg-lightBg2 border-lightBorder"
+        className={`mx-3 flex justify-between ${
+          !darkMode ? "bg-grayBg border-grayBorder" : "bg-lightBg2 border-white"
         } rounded-xl shadow-xl border p-5 sm:py-2 sm:px-3 flex-col`}
       >
         <div className="w-full grid grid-cols-7 place-items-center sm:flex flex-wrap gap-5 !gap-y-0 items-center justify-center">
@@ -269,11 +285,7 @@ export default about;
 export const Iklan = ({ darkMode }: { darkMode: boolean }) => {
   return (
     <section
-      className={`${
-        !darkMode
-          ? "lg:border-none shadow-none"
-          : "lg:bg-lightBg2 lg:border-lightBorder"
-      } flex justify-center items-center lg:rounded-xl lg:shadow-xl lg:border  p-5 flex-col gap-5 sm:gap-4`}
+      className={`border-none flex justify-center items-center lg:rounded-xl lg:shadow-xl lg:border  p-5 flex-col gap-5 sm:gap-4`}
       style={{ boxShadow: "none" }}
     >
       <span
@@ -287,13 +299,15 @@ export const Iklan = ({ darkMode }: { darkMode: boolean }) => {
         text="Creating your own or business website with me."
         speed={3}
         disabled={false}
-        className="text-base sm:text-sm"
+        className="bg-[#2E2E2E] text-base sm:text-sm"
       />
       <div className="flex gap-3 mt-2">
         <button
-          className={`${
-            !darkMode ? "bg-[#2E2E2E]" : "bg-lightText"
-          } border-none xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md hover:shadow-xl hover:border`}
+          className={` ${
+            !darkMode
+              ? "bg-[#2E2E2E] border-none  hover:shadow-xl hover:border"
+              : "!border"
+          } xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md`}
           onClick={() => window.open("mailto:oyojwork@gmail.com")}
         >
           <BiSend
@@ -303,8 +317,10 @@ export const Iklan = ({ darkMode }: { darkMode: boolean }) => {
         </button>
         <button
           className={`bg-transparent ${
-            !darkMode ? "border-grayBorder" : "border-lightBorder"
-          } border xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md hover:shadow-xl hover:border`}
+            !darkMode
+              ? "border-grayBorder hover:shadow-xl hover:border"
+              : "border-white"
+          } border xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md`}
           onClick={() =>
             window.open(
               "https://drive.google.com/file/d/1Zzl5JJBTmtMHhEteBrJMqJdBgLer9ZUQ/view?usp=drive_link"

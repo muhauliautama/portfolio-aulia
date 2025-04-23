@@ -4,7 +4,7 @@ import {
   BiLogoGithub,
   BiLogoInstagramAlt,
   BiLogoGmail,
-  BiLogoTwitter,
+  // BiLogoTwitter,
   BiSolidFileBlank,
   BiSend,
   BiLogoSpotify,
@@ -14,11 +14,11 @@ import { SplitText } from "@/components/Text";
 import { AnimatedContent } from "@/components/Content";
 
 const sosmedLink = [
-  {
-    id: 1,
-    icon: <BiLogoTwitter className="text-white" size={26} />,
-    link: "https://x.com/ajyoor",
-  },
+  // {
+  //   id: 1,
+  //   icon: <BiLogoTwitter className="text-white" size={26} />,
+  //   link: "https://x.com/ajyoor",
+  // },
   {
     id: 2,
     icon: <BiLogoInstagramAlt className="text-white" size={26} />,
@@ -52,10 +52,9 @@ const home = ({ dark }: { dark: any }) => {
   return (
     <main
       className={`ff-1 flex flex-col h-fit text-start gap-3 px-3 w-auto rounded-xl shadow-xl py-5 my-2 border xs:px-1 ${
-        !darkMode
-          ? "bg-grayBg border-grayBorder"
-          : "bg-lightBg2 border-lightBorder"
+        !darkMode ? "bg-grayBg border-grayBorder" : "bg-lightBg2 border-white"
       }`}
+      // desktop content"
     >
       <section className="flex justify-between items-center px-5">
         <div className="flex gap-4 items-center">
@@ -83,12 +82,17 @@ const home = ({ dark }: { dark: any }) => {
           </span>
         </div>
       </section>
+
+      {/* main home resp */}
       <section>
+        {/* desktop content */}
         <div className="flex justify-center items-center text-start my-12 md:hidden gap-16">
           <div className="flex flex-col gap-2">
             <SplitText
               text="I'm Airlangga"
-              className="text-white text-4xl font-bold my-3 sm:text-2xl !text-start"
+              className={`text-4xl font-bold my-3 sm:text-2xl !text-start ${
+                !darkMode ? "text-white" : "text-lightText"
+              }`}
               delay={150}
               animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
               animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
@@ -98,25 +102,25 @@ const home = ({ dark }: { dark: any }) => {
             />
             <span
               className={`${
-                !darkMode ? "text-grayText" : "text-lightText"
+                !darkMode ? "text-grayText" : "text-white"
               } text-md sm:text-sm`}
             >
-              Front End Web Developer from Malang, Indonesia.
+              Front End Web Developer from Indonesia.
             </span>
             <span
               className={`${
-                !darkMode ? "text-grayText" : "text-lightText"
+                !darkMode ? "text-grayText" : "text-white"
               } text-md sm:text-sm`}
             >
               Currently still learning about Typescript :)
             </span>
             <div className="flex gap-3 mt-6">
               <button
-                className={`${
+                className={` ${
                   !darkMode
-                    ? "bg-transparent border-grayBorder"
-                    : "bg-lightText border-white"
-                } border xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md hover:shadow-xl hover:border`}
+                    ? "bg-[#2E2E2E] border-none  hover:shadow-xl hover:border"
+                    : "!border"
+                } xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md`}
                 onClick={() => window.open("mailto:oyojwork@gmail.com")}
               >
                 <BiSend
@@ -126,8 +130,10 @@ const home = ({ dark }: { dark: any }) => {
               </button>
               <button
                 className={`${
-                  !darkMode ? "border-grayBorder" : "border-lightBorder"
-                } border xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md hover:shadow-xl hover:border`}
+                  !darkMode
+                    ? "border-grayBorder hover:shadow-xl hover:border"
+                    : "border-white"
+                } border xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md`}
                 onClick={() =>
                   window.open(
                     "https://drive.google.com/file/d/1Zzl5JJBTmtMHhEteBrJMqJdBgLer9ZUQ/view?usp=drive_link"
@@ -145,7 +151,7 @@ const home = ({ dark }: { dark: any }) => {
             className={`border  w-[160px] h-[160px] overflow-hidden rounded-full p-3 ${
               !darkMode
                 ? "bg-[#2C2C2C] border-grayBorder"
-                : "bg-lightBgborder-lightBorder"
+                : "bg-lightBgborder-white"
             }`}
           >
             <img
@@ -158,12 +164,14 @@ const home = ({ dark }: { dark: any }) => {
             />
           </div>
         </div>
+
+        {/* resp content*/}
         <div className="hidden md:flex flex-col gap-2 justify-center items-center text-center my-12">
           <div
-            className={`border  w-[160px] h-[160px] overflow-hidden rounded-full p-3 ${
+            className={`border w-[160px] h-[160px] overflow-hidden rounded-full p-3 ${
               !darkMode
                 ? "bg-[#2C2C2C] border-grayBorder"
-                : "bg-lightBg border-lightBorder"
+                : "bg-lightBg border-white"
             }`}
           >
             <img
@@ -177,7 +185,9 @@ const home = ({ dark }: { dark: any }) => {
           </div>
           <SplitText
             text="I'm Airlangga"
-            className="text-white text-4xl font-bold my-3 sm:text-2xl"
+            className={`text-4xl font-bold my-3 sm:text-2xl ${
+              !darkMode ? "text-white" : "text-lightText"
+            }`}
             delay={150}
             animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
             animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
@@ -198,14 +208,14 @@ const home = ({ dark }: { dark: any }) => {
             <div className="flex flex-col gap-2">
               <span
                 className={`${
-                  !darkMode ? "text-grayText" : "text-lightBorder"
+                  !darkMode ? "text-grayText" : "text-white"
                 } text-md sm:text-sm`}
               >
-                Front End Web Developer from Malang, Indonesia.
+                Front End Web Developer from Indonesia.
               </span>
               <span
                 className={`${
-                  !darkMode ? "text-grayText" : "text-lightBorder"
+                  !darkMode ? "text-grayText" : "text-white"
                 } text-md sm:text-sm`}
               >
                 Currently still learning about Typescript :)
@@ -214,11 +224,11 @@ const home = ({ dark }: { dark: any }) => {
           </AnimatedContent>
           <div className="flex gap-3 mt-6">
             <button
-              className={`${
+              className={` ${
                 !darkMode
-                  ? "bg-transparent border-grayBorder"
-                  : "bg-lightText border-white"
-              } border xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md hover:shadow-xl hover:border`}
+                  ? "bg-[#2E2E2E] border-none  hover:shadow-xl hover:border"
+                  : "!border"
+              } xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md`}
               onClick={() => window.open("mailto:oyojwork@gmail.com")}
             >
               <BiSend
@@ -228,8 +238,8 @@ const home = ({ dark }: { dark: any }) => {
             </button>
             <button
               className={`${
-                !darkMode ? "border-grayBorder" : "border-lightBorder"
-              } border xs:text-sm flex gap-2 items-center  text-white py-1 px-5 rounded-md hover:shadow-xl hover:border`}
+                !darkMode ? "border-grayBorder hover:shadow-xl" : "border-white"
+              } border xs:text-sm flex gap-2 items-center text-white py-1 px-5 rounded-md`}
               onClick={() =>
                 window.open(
                   "https://drive.google.com/file/d/1Zzl5JJBTmtMHhEteBrJMqJdBgLer9ZUQ/view?usp=drive_link"
@@ -244,11 +254,14 @@ const home = ({ dark }: { dark: any }) => {
           </div>
         </div>
       </section>
+
+      {/* follow me */}
       <section
         className={`${
+          // desktop content
           !darkMode
             ? "bg-grayBorder border-grayBorder"
-            : "bg-lightBg2 border-lightBorder"
+            : "bg-lightBg2 border-white"
         } flex justify-between rounded-xl shadow-xl border p-5 sm:flex-col sm:gap-4`}
       >
         <div className="flex gap-4 items-center">
@@ -272,9 +285,9 @@ const home = ({ dark }: { dark: any }) => {
                 key={key.link}
                 className={`border ${
                   !darkMode
-                    ? "bg-[#2C2C2C] border border-gray-700"
-                    : "bg-lightBg2 shadow-2xl border-white"
-                } text-white rounded-full p-2 hover:bg-grayBg`}
+                    ? "bg-[#2C2C2C] border border-gray-500 hover:bg-grayBg"
+                    : "bg-lightBg2 shadow-2xl border-white hover:bg-lightText"
+                } text-white rounded-full p-2`}
                 to={key.link}
               >
                 {key.icon}
@@ -283,11 +296,14 @@ const home = ({ dark }: { dark: any }) => {
           })}
         </div>
       </section>
+
+      {/* last updated */}
       <section
         className={`${
+          // desktop content
           !darkMode
             ? "bg-grayBorder border-grayBorder"
-            : "bg-lightBg2 border-lightBorder"
+            : "bg-lightBg2 border-white"
         } flex justify-center rounded-xl shadow-xl border p-5`}
       >
         <span
