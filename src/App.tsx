@@ -6,7 +6,6 @@ import {
   BiCube,
   BiHomeAlt,
   BiUserCircle,
-  BiPlusCircle,
   BiBookContent,
   BiSend,
 } from "react-icons/bi";
