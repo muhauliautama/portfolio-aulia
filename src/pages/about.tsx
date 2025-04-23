@@ -232,14 +232,14 @@ const about = ({ dark }: { dark: any }) => {
                   <span
                     className={`text-grayText text-sm font-semibold ${
                       !darkMode ? "bg-[#424242]" : "bg-gray-100"
-                    } rounded-xl py-1 px-3 w-fit`}
+                    } rounded-xl py-1 px-3 w-fit xsm:text-xs xsm:font-bold`}
                   >
                     {key.role}
                   </span>
                   <span
                     className={`text-grayText text-sm font-semibold ${
                       !darkMode ? "bg-[#424242]" : "bg-gray-100"
-                    } rounded-xl py-1 px-3 w-fit flex items-center`}
+                    } rounded-xl py-1 px-3 w-fit flex items-center xsm:text-xs xsm:font-bold`}
                   >
                     {key.status}
                   </span>

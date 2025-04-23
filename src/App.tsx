@@ -112,13 +112,13 @@ function App() {
         </div>
         <div className="flex gap-1">
           <button
-            className="border-none bg-transparent hover:shadow-none flex gap-2 items-center text-white py-1 px-5 rounded-md hover:border"
+            className="border-none bg-transparent hover:shadow-none flex gap-2 items-center text-white py-1 px-5 rounded-md hover:border xsm:p-0"
             onClick={() => setDarkMode(!darkMode)}
           >
             {!darkMode ? <MdDarkMode size={28} /> : <PiSunDimFill size={28} />}
           </button>
           <button
-            className={`sm:text-xs sm:px-3 sm:font-bold flex gap-2 items-center text-white py-1 px-5 rounded-md hover:shadow-xl ${
+            className={`sm:text-xs sm:px-3 sm:font-bold flex gap-2 items-center text-white py-1 px-5 rounded-md hover:shadow-xl xsm:hidden ${
               !darkMode ? "bg-[#2E2E2E]" : "bg-lightText"
             }`}
             onClick={() => window.open("mailto:oyojwork@gmail.com")}
