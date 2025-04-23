@@ -29,7 +29,9 @@ const ImageContainer = ({
   darkMode: boolean;
 }) => (
   <div
-    className={`flex flex-col gap-1 !rounded-xl p-3 relative overflow-hidden`}
+    className={`flex flex-col gap-1 !rounded-xl p-3 relative overflow-hidden ${
+      darkMode && "cursor-pointer"
+    }`}
   >
     <img
       src={src}
