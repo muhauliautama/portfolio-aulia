@@ -51,7 +51,7 @@ const home = ({ dark }: { dark: any }) => {
 
   return (
     <main
-      className={`ff-1 flex flex-col h-fit text-start gap-3 px-3 w-auto rounded-xl shadow-xl py-5 my-2 border xs:px-1 ${
+      className={`ff-1 flex flex-col h-fit text-start gap-3 w-auto rounded-xl shadow-xl py-5 my-2 border xs:px-1 ${
         !darkMode ? "bg-grayBg border-grayBorder" : "bg-lightBg2 border-white"
       }`}
       // desktop content"
@@ -68,13 +68,13 @@ const home = ({ dark }: { dark: any }) => {
               !darkMode ? "text-grayTextContent" : "text-lightText"
             } text-xl sm:text-lg xs:text-sm font-bold`}
           >
-            Front End Web Developer
+            Software Engineer
           </span>
         </div>
         <div
           className={`rounded-full ${
             !darkMode ? "bg-[#263A2F]" : "bg-lightBg"
-          } w-fit h-fit sm:p-2 pl-[17px] p-2 flex items-center gap-1`}
+          } w-fit h-fit sm:p-2 pl-[17px] p-[6px] flex items-center gap-1`}
         >
           <div className="rounded-full bg-green-500 w-2 h-2 animate-blink"></div>
           <span className="uppercase text-[#049753] text-xs px-2 sm:hidden">
@@ -105,14 +105,14 @@ const home = ({ dark }: { dark: any }) => {
                 !darkMode ? "text-grayText" : "text-white"
               } text-md sm:text-sm`}
             >
-              Front End Web Developer from Indonesia.
+              Software Engineer from Indonesia.
             </span>
             <span
               className={`${
                 !darkMode ? "text-grayText" : "text-white"
               } text-md sm:text-sm`}
             >
-              Currently still learning about Typescript :)
+              Always learning, always building.
             </span>
             <div className="flex gap-3 mt-6">
               <button
@@ -211,14 +211,14 @@ const home = ({ dark }: { dark: any }) => {
                   !darkMode ? "text-grayText" : "text-white"
                 } text-md sm:text-sm`}
               >
-                Front End Web Developer from Indonesia.
+                Software Engineer from Indonesia.
               </span>
               <span
                 className={`${
                   !darkMode ? "text-grayText" : "text-white"
                 } text-md sm:text-sm`}
               >
-                Currently still learning about Typescript :)
+                Always learning, always building.
               </span>
             </div>
           </AnimatedContent>
@@ -262,7 +262,7 @@ const home = ({ dark }: { dark: any }) => {
           !darkMode
             ? "bg-grayBorder border-grayBorder"
             : "bg-lightBg2 border-white"
-        } flex justify-between rounded-xl shadow-xl border p-5 sm:flex-col sm:gap-4`}
+        } flex justify-between rounded-xl shadow-xl border p-5 sm:flex-col sm:gap-4 mx-3`}
       >
         <div className="flex gap-4 items-center">
           <div
@@ -304,7 +304,7 @@ const home = ({ dark }: { dark: any }) => {
           !darkMode
             ? "bg-grayBorder border-grayBorder"
             : "bg-lightBg2 border-white"
-        } flex justify-center rounded-xl shadow-xl border p-5`}
+        } flex justify-center rounded-xl shadow-xl border p-5 mx-3`}
       >
         <span
           className={` ${

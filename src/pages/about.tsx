@@ -158,14 +158,18 @@ const about = ({ dark }: { dark: any }) => {
         <span
           className={`${
             !darkMode ? "text-grayText" : "text-white"
-          } text-justify text-base sm:text-sm leading-8 sm:!leading-6 pt-2 block`}
+          } text-justify text-base sm:text-sm leading-8 sm:!leading-7 pt-2 block`}
         >
-          A Front End Web Developer with experience and expertise in creating
-          attractive and responsive user interfaces. Do you need a website that
-          is not only functional but also visually stunning? I am ready to help
-          you achieve those goals. I invite you to explore the diverse range of
-          projects I have undertaken, highlighting my skills, creativity, and
-          attention to detail.
+          I’m a Software Engineer with a strong foundation in Front-End Web
+          Development, now expanding into full-stack development. My journey
+          began with crafting responsive, user-centric interfaces — and now I’m
+          building on that by exploring backend technologies, scalable
+          architectures, and collaborative development practices.
+          <br />
+          I’m passionate about writing clean, maintainable code and continuously
+          learning to become a well-rounded engineer. Whether it’s creating
+          intuitive UI or solving deeper technical challenges, I’m driven by
+          curiosity, growth, and building impactful digital experiences.
         </span>
       </section>
       <section

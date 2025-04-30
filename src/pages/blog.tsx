@@ -1,7 +1,7 @@
 const BlogContent = ({ dark }: { dark: boolean }) => {
   return (
     <main
-      className={`ff-1 flex flex-col h-fit text-start gap-3 px-3 w-auto rounded-xl shadow-xl py-5 my-2 border xs:px-1 ${
+      className={`ff-1 flex flex-col h-fit text-start gap-3 w-auto rounded-xl shadow-xl py-5 my-2 border xs:px-1 ${
         !dark ? "bg-grayBg border-grayBorder" : "bg-lightBg2 border-lightBorder"
       }`}
     >
