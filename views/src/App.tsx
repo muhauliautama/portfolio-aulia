@@ -26,7 +26,7 @@ function App() {
           size="28px"
         />
       ),
-      url: "/",
+      url: "/home",
     },
     {
       icon: (
@@ -85,7 +85,10 @@ function App() {
       >
         <div className="flex items-center gap-10 sm:gap-4 xs:gap-4 relative">
           {data.map((key) => {
-            const isActive = url.pathname === key.url;
+            const isActive = url.pathname
+              .split("/")
+              .join(" ")
+              .includes(key.url.split("/").join(" "));
             return (
               <Link
                 key={key.url}
