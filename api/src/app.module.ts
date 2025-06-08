@@ -5,6 +5,8 @@ import { BlogsModule } from './blogs/blogs.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './config/database.config';
+import { CategoryModule } from './category/category.module';
+import { UploadsModule } from './uploads/uploads.module';
 
 @Module({
   imports: [
@@ -16,6 +18,8 @@ import { typeOrmConfig } from './config/database.config';
       useFactory: (configService: ConfigService) =>
         typeOrmConfig(configService),
     }),
+    CategoryModule,
+    UploadsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

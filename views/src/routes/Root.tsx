@@ -6,10 +6,23 @@ import BlogContent from "@/pages/blog";
 import { useContext } from "react";
 import { DarkMode } from "@/context/DarkMode";
 import BlogDetailContent from "@/pages/detail";
+import ListBlogContent from "@/pages/admin/pages/list";
+import BlogForm from "@/pages/admin/pages/form";
 
 const Root = () => {
   const location = useLocation();
   const { darkMode } = useContext(DarkMode);
+  const isAdminRoute = location.pathname.startsWith("/admin");
+
+  if (isAdminRoute) {
+    return (
+      <Routes location={location} key={location.pathname}>
+        <Route path="/admin" element={<ListBlogContent />} />
+        <Route path="/admin/create" element={<BlogForm />} />
+        <Route path="/admin/edit/:id" element={<BlogForm />} />
+      </Routes>
+    );
+  }
 
   return (
     <Routes location={location} key={location.pathname}>

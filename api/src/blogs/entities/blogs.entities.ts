@@ -21,6 +21,9 @@ export class Blogs {
   @Column({ type: 'enum', enum: BlogStatus, default: BlogStatus.DRAFT })
   status: BlogStatus;
 
+  @Column({ type: 'varchar', length: 255, nullable: true })
+  photo: string;
+
   @CreateDateColumn()
   readonly createdAt: Date;
 

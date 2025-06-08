@@ -14,7 +14,6 @@ import {
 import { gsap } from "gsap";
 import { Observer } from "gsap/Observer";
 
-// for animated content
 type Direction = "vertical" | "horizontal";
 interface AnimatedContentProps {
   children: ReactNode;
@@ -26,13 +25,13 @@ interface AnimatedContentProps {
   animateOpacity?: boolean;
   scale?: number;
   threshold?: number;
+  key?: string;
 }
 interface SpringStyles {
   transform: SpringValue<string>;
   opacity: SpringValue<number>;
 }
 
-// for fade content
 interface FadeContentProps {
   children: ReactNode;
   blur?: boolean;
@@ -47,50 +46,43 @@ interface FadeStyles extends React.CSSProperties {
   transition: string;
   filter: string;
 }
-
-// for scroll
 interface ScrollItem {
   content: React.ReactNode;
 }
 interface InfiniteScrollProps {
-  // ----- Layout / Style Props -----
   width?: string;
   maxHeight?: string;
   negativeMargin?: string;
-  // ----- Items Prop -----
   items?: ScrollItem[];
   itemMinHeight?: number;
-  // ----- Tilt Props -----
   isTilted?: boolean;
   tiltDirection?: "left" | "right";
-  // ----- Autoplay Props -----
   autoplay?: boolean;
   autoplaySpeed?: number;
   autoplayDirection?: "up" | "down";
   pauseOnHover?: boolean;
 }
 
-// for card
 interface Position {
   x: number;
   y: number;
 }
 interface SpotlightCardProps {
   children: ReactNode;
-  className?: string;
   spotlightColor?: string;
+  dark: boolean;
 }
 
 export const AnimatedContent: React.FC<AnimatedContentProps> = ({
   children,
-  distance = 100,
+  distance = 150,
   direction = "vertical",
   reverse = false,
-  config = { tension: 50, friction: 25 },
-  initialOpacity = 0,
-  animateOpacity = true,
-  scale = 1,
-  threshold = 0.1,
+  config = { tension: 80, friction: 20 },
+  initialOpacity = 0.2,
+  animateOpacity = false,
+  scale = 1.1,
+  threshold = 0.2,
 }) => {
   const [inView, setInView] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -185,17 +177,13 @@ export const FadeContent: React.FC<FadeContentProps> = ({
 };
 
 export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
-  // ----- Layout / Style Props -----
   width = "30rem",
   maxHeight = "100%",
   negativeMargin = "-0.5em",
-  // ----- Items Prop -----
   items = [],
   itemMinHeight = 150,
-  // ----- Tilt Props -----
   isTilted = false,
   tiltDirection = "left",
-  // ----- Autoplay Props -----
   autoplay = false,
   autoplaySpeed = 0.5,
   autoplayDirection = "down",
@@ -326,11 +314,9 @@ export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
       ref={wrapperRef}
       style={{ maxHeight }}
     >
-      {/* Gradient Overlays */}
       <div className="absolute top-0 left-0 w-full h-1/4 bg-gradient-to-b from-black to-transparent z-10 pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-full h-1/4 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none"></div>
 
-      {/* Container */}
       <div
         className="flex flex-col overscroll-contain px-4 cursor-grab origin-center"
         ref={containerRef}
@@ -358,8 +344,8 @@ export const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
 
 export const SpotlightCard: React.FC<SpotlightCardProps> = ({
   children,
-  className = "",
-  spotlightColor = "rgba(255, 255, 255, 0.25)",
+  spotlightColor = "rgba(0, 229, 255, 0.2)",
+  dark,
 }) => {
   const divRef = useRef<HTMLDivElement>(null);
   const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -398,7 +384,9 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
       onBlur={handleBlur}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`relative rounded-3xl border border-neutral-800 bg-neutral-900 overflow-hidden p-5 ${className}`}
+      className={`relative border border-neutral-800 bg-neutral-900 overflow-hidden p-5 flex flex-col gap-1 transition-colors sm:w-full !rounded-xl ${
+        dark && "!bg-lightBg !border-lightBorder"
+      }`}
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out"
@@ -408,6 +396,31 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
         }}
       />
       {children}
+    </div>
+  );
+};
+
+export const DotCircleContent = ({
+  dark,
+  title,
+}: {
+  dark: boolean;
+  title: string;
+}) => {
+  return (
+    <div className="flex gap-4 items-center">
+      <div
+        className={`rounded-full transition-colors ${
+          !dark ? "bg-[#626262]" : "bg-red-400"
+        } w-2 h-2`}
+      ></div>
+      <span
+        className={`${
+          !dark ? "text-grayTextContent" : "text-lightText"
+        } text-xl sm:text-lg xs:text-sm font-bold`}
+      >
+        {title}
+      </span>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 
-const listEnv = ["API_DEV"];
+const listEnv = ["API_DEV", "ADMIN_KEY"];
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {

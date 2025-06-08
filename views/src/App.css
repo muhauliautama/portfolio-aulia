@@ -42,3 +42,35 @@
 .read-the-docs {
   color: #888;
 }
+
+.ql-container {
+  height: 500px !important;
+}
+.ql-editor {
+  min-height: 500px;
+  height: 500px !important;
+  overflow: auto;
+}
+
+.container-blog-content img {
+  display: none;
+}
+
+.container-dcontent-blog img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  background-position: center;
+  /* border: 1px solid; */
+  border-radius: 12px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 12px 0;
+  pointer-events: none;
+}
+
+.container-dcontent-blog h2,
+.container-dcontent-blog blockquote {
+  font-size: 21px;
+  margin-bottom: 10px;
+}

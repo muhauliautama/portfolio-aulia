@@ -8,14 +8,16 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class BlogsService {
-  // private blogs: BlogInterface[] = [];
-
   constructor(
     @InjectRepository(Blogs) private BlogRepository: Repository<Blogs>,
   ) {}
 
   async findAll(): Promise<Blogs[]> {
-    return await this.BlogRepository.find();
+    return await this.BlogRepository.find({
+      order: {
+        createdAt: 'DESC',
+      },
+    });
   }
 
   async findOne(id: string): Promise<Blogs | null> {
@@ -37,8 +39,4 @@ export class BlogsService {
   async delete(blogs: BlogInterface): Promise<void> {
     await this.BlogRepository.delete(blogs.id);
   }
-
-  // findOneByParams(id: string): BlogInterface | undefined {
-  //   return this.blogs.find((blog) => blog.id === id);
-  // }
 }

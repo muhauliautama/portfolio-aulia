@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, IsEnum } from 'class-validator';
+import { IsNotEmpty, IsString, IsEnum, IsOptional } from 'class-validator';
 import { BlogStatus } from '../interface/blogs';
 export class CreateBlogDto {
   @IsString()
@@ -12,6 +12,10 @@ export class CreateBlogDto {
   @IsNotEmpty()
   @IsEnum(BlogStatus)
   status: BlogStatus;
+
+  @IsOptional()
+  @IsString()
+  photo: string;
 
   tags: string[];
 }

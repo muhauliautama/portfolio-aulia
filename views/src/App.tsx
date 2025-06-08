@@ -16,6 +16,8 @@ import { PiSunDimFill } from "react-icons/pi";
 function App() {
   const { darkMode, setDarkMode } = useContext(DarkMode);
   const url = useLocation();
+  const isAdminRoute = url.pathname.startsWith("/admin");
+
   const data = [
     {
       icon: (
@@ -66,6 +68,10 @@ function App() {
   useEffect(() => {
     window?.scrollTo({ top: 0, behavior: "smooth" });
   }, [url.pathname]);
+
+  if (isAdminRoute) {
+    return <Root />;
+  }
 
   return (
     <div
