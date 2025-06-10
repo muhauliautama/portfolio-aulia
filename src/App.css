@@ -1,0 +1,76 @@
+#root {
+  /* max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center; */
+  height: 100vh;
+  width: 100vw;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.ql-container {
+  height: 500px !important;
+}
+.ql-editor {
+  min-height: 500px;
+  height: 500px !important;
+  overflow: auto;
+}
+
+.container-blog-content img {
+  display: none;
+}
+
+.container-dcontent-blog img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  background-position: center;
+  /* border: 1px solid; */
+  border-radius: 12px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 12px 0;
+  pointer-events: none;
+}
+
+.container-dcontent-blog h2,
+.container-dcontent-blog blockquote {
+  font-size: 21px;
+  margin-bottom: 10px;
+}
