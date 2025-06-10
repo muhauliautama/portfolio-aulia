@@ -29,7 +29,7 @@ const home = ({ dark }: { dark: any }) => {
       <ContentResp dark={dark} />
 
       {/* follow me */}
-      <CardSecondary dark={dark}>
+      <CardSecondary className="!flex-row sm:!flex-col" dark={dark}>
         <DotCircleContent dark={dark} title="Follow Me" />
         <div className="flex flex-wrap gap-6 items-center sm:justify-evenly sm:items-center sm:gap-2 xs:gap-4">
           {SosialMedia.map((key) => {
