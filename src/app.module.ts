@@ -7,6 +7,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './config/database.config';
 import { CategoryModule } from './category/category.module';
 import { UploadsModule } from './uploads/uploads.module';
+import { RateLimiterModule, RateLimiterGuard } from 'nestjs-rate-limiter';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -20,8 +22,20 @@ import { UploadsModule } from './uploads/uploads.module';
     }),
     CategoryModule,
     UploadsModule,
+    RateLimiterModule.register({
+      for: 'Express',
+      type: 'Memory',
+      points: 5,
+      duration: 60,
+    }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: RateLimiterGuard,
+    },
+  ],
 })
 export class AppModule {}
