@@ -73,23 +73,7 @@ const ContentResp = ({ dark }: { dark: any }) => {
       <div className="flex justify-center items-center text-start my-12 md:hidden gap-16">
         <div className="flex flex-col gap-2">
           <SplitTextContent dark={dark} />
-          <AnimatedContent>
-            <span
-              className={`${
-                !dark ? "text-grayText" : "text-white"
-              } text-md sm:text-sm`}
-            >
-              Software Engineer from Indonesia.
-            </span>
-            <span
-              className={`${
-                !dark ? "text-grayText" : "text-white"
-              } text-md sm:text-sm`}
-            >
-              Always learning, always building.
-            </span>
-            <ButtonSection dark={dark} />
-          </AnimatedContent>
+          <DescriptionContent dark={dark} />
         </div>
         <div
           className={`border  w-[160px] h-[160px] overflow-hidden rounded-full p-3 ${
@@ -124,25 +108,7 @@ const ContentResp = ({ dark }: { dark: any }) => {
           />
         </div>
         <SplitTextContent dark={dark} />
-        <AnimatedContent>
-          <div className="flex flex-col gap-2">
-            <span
-              className={`${
-                !dark ? "text-grayText" : "text-white"
-              } text-md sm:text-sm`}
-            >
-              Software Engineer from Indonesia.
-            </span>
-            <span
-              className={`${
-                !dark ? "text-grayText" : "text-white"
-              } text-md sm:text-sm`}
-            >
-              Always learning, always building.
-            </span>
-          </div>
-          <ButtonSection dark={dark} />
-        </AnimatedContent>
+        <DescriptionContent dark={dark} />
       </div>
     </section>
   );
@@ -195,5 +161,29 @@ const SplitTextContent = ({ dark }: { dark: boolean }) => {
       threshold={0.2}
       rootMargin="-50px"
     />
+  );
+};
+
+const DescriptionContent = ({ dark }: { dark: boolean }) => {
+  return (
+    <AnimatedContent>
+      <div className="flex flex-col gap-2">
+        <span
+          className={`${
+            !dark ? "text-grayText" : "text-white"
+          } text-md sm:text-sm`}
+        >
+          Software Engineer from Indonesia.
+        </span>
+        <span
+          className={`${
+            !dark ? "text-grayText" : "text-white"
+          } text-md sm:text-sm`}
+        >
+          Always learning, always building.
+        </span>
+      </div>
+      <ButtonSection dark={dark} />
+    </AnimatedContent>
   );
 };
