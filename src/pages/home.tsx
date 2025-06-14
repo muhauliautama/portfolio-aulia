@@ -185,7 +185,7 @@ const SplitTextContent = ({ dark }: { dark: boolean }) => {
   return (
     <SplitText
       text="I'm Airlangga"
-      className={`text-4xl font-bold my-3 sm:text-2xl ${
+      className={`text-4xl font-bold my-3 sm:text-2xl !text-start sm:!text-center ${
         !dark ? "text-white" : "text-lightText"
       }`}
       delay={150}

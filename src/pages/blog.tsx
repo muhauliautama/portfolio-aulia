@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import Input from "@/components/Input";
 import Card, { CardBlogs } from "@/components/Card";
 import { AnimatedContent, DotCircleContent } from "@/components/Content";
@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { FileX2, Search, X } from "lucide-react";
 import { CiClock2 } from "react-icons/ci";
 import axios from "axios";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export interface BlogInterface {
   id: string;
@@ -18,8 +19,10 @@ export interface BlogInterface {
 
 const BlogContent = ({ dark }: { dark: boolean }) => {
   const [blog, setBlog] = useState<BlogInterface[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLongLoading, setIsLongLoading] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const filteredBlog = useMemo(() => {
     if (!searchTerm) {
@@ -32,9 +35,15 @@ const BlogContent = ({ dark }: { dark: boolean }) => {
 
   useEffect(() => {
     const fetchBlog = async () => {
+      setIsLoading(true);
+      setIsLongLoading(false);
+
+      timerRef.current = setTimeout(() => {
+        setIsLongLoading(true);
+      }, 5000);
+
       try {
-        setLoading(true);
-        const res = await axios.get(process.env.API_DEV + "blogs");
+        const res = await axios.get(`${process.env.API_DEV}blogs`);
 
         setBlog(
           res.data.filter(
@@ -44,17 +53,76 @@ const BlogContent = ({ dark }: { dark: boolean }) => {
       } catch (error) {
         console.error("Error fetching blog posts:", error);
       } finally {
-        setLoading(false);
+        setIsLoading(false);
+        if (timerRef.current) {
+          clearTimeout(timerRef.current);
+        }
       }
     };
 
     fetchBlog();
+
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
   }, []);
+
+  const renderLoadingState = () => (
+    <div className="flex flex-col items-center justify-center gap-6">
+      {isLongLoading ? (
+        <motion.div
+          key="initial-loading"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20, position: "absolute" }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col items-center gap-4 cursor-pointer"
+        >
+          <DotLottieReact
+            src="https://lottie.host/02545bb9-3125-4004-b193-4f846739db3d/o2B2a6l04K.lottie"
+            loop
+            autoplay
+            style={{ height: "200px", width: "200px" }}
+          />
+          <span
+            className={`text-sm font-semibold animate-pulse ${
+              dark ? "text-white" : "text-grayTextContent"
+            } `}
+          >
+            Blog will be loaded. Waiting for server to wake up...
+          </span>
+        </motion.div>
+      ) : (
+        <motion.div
+          key="long-loading"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="grid grid-cols-2 gap-3 sm:grid-cols-1 w-full"
+        >
+          {Array(4)
+            .fill(null)
+            .map((_, i) => (
+              <div
+                key={i}
+                className={`h-32 w-full ${
+                  !dark
+                    ? "bg-[#373737] border-grayBorder"
+                    : "bg-lightBg border-lightBorder"
+                } rounded-xl shadow-xl border animate-pulse opacity-30`}
+              ></div>
+            ))}
+        </motion.div>
+      )}
+    </div>
+  );
 
   return (
     <Card dark={dark} className="!gap-4">
       <DotCircleContent dark={dark} title="Blogs" />
-      {!loading && (
+      {isLoading && (
         <Input
           dark={dark}
           placeholder="Search Blogs"
@@ -77,21 +145,9 @@ const BlogContent = ({ dark }: { dark: boolean }) => {
           value={searchTerm}
         />
       )}
-      {loading ? (
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-1">
-          {Array(6)
-            .fill(null)
-            .map((_, i) => (
-              <div
-                key={i}
-                className={`h-32 ${
-                  !dark
-                    ? "bg-[#373737] border-grayBorder text-white"
-                    : "bg-lightBg border-lightBorder"
-                } rounded-xl shadow-xl border border-grayBorder animate-pulse opacity-30`}
-              ></div>
-            ))}
-        </div>
+
+      {isLoading ? (
+        renderLoadingState()
       ) : filteredBlog.length > 0 ? (
         <AnimatedContent>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-1">
@@ -156,7 +212,7 @@ const BlogContent = ({ dark }: { dark: boolean }) => {
             className="opacity-50"
             color={dark ? "#e98074" : "#8f8f8f"}
           />
-          <span className="text-lg font-semibold">Blog belum tersedia</span>
+          <span className="text-lg font-semibold">Blog not found</span>
         </motion.div>
       )}
     </Card>
