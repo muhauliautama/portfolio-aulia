@@ -19,9 +19,12 @@ function ListBlogContent() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const navigate = useNavigate();
 
+  // Use import.meta.env for Vite environment variables
+  const API_URL = import.meta.env.VITE_API_DEV || 'https://api.example.com/';
+
   const fetchBlogs = async () => {
     try {
-      const response = await axios.get(process.env.API_DEV + "blogs");
+      const response = await axios.get(API_URL + "blogs");
       setBlogs(response.data);
     } catch (error) {
       console.error("Gagal mengambil data blog:", error);
@@ -40,7 +43,7 @@ function ListBlogContent() {
   const handleDelete = async (id: string) => {
     if (window.confirm("Apakah Anda yakin ingin menghapus blog ini?")) {
       try {
-        await axios.delete(`${process.env.API_DEV}blogs/${id}`);
+        await axios.delete(`${API_URL}blogs/${id}`);
         await fetchBlogs();
         alert("Blog berhasil dihapus");
       } catch (error) {
@@ -53,7 +56,7 @@ function ListBlogContent() {
   const handleToggleStatus = async (blog: Blog) => {
     const newStatus = blog.status === "DRAFT" ? "PUBLISHED" : "DRAFT";
     try {
-      await axios.put(`${process.env.API_DEV}blogs/${blog.id}`, {
+      await axios.put(`${API_URL}blogs/${blog.id}`, {
         status: newStatus,
       });
       await fetchBlogs();

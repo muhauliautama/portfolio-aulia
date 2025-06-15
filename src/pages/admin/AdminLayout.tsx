@@ -6,7 +6,8 @@ interface AdminLayoutProps {
 }
 
 const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
-  const isAdmin = localStorage.getItem("ADMIN_KEY") === process.env.ADMIN_KEY;
+  const ADMIN_KEY = import.meta.env.VITE_ADMIN_KEY || 'your-admin-key-here';
+  const isAdmin = localStorage.getItem("ADMIN_KEY") === ADMIN_KEY;
   const navigate = useNavigate();
 
   useEffect(() => {

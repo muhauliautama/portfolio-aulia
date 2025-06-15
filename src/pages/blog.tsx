@@ -24,6 +24,9 @@ const BlogContent = ({ dark }: { dark: boolean }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Use import.meta.env for Vite environment variables
+  const API_URL = import.meta.env.VITE_API_DEV || 'https://api.example.com/';
+
   const filteredBlog = useMemo(() => {
     if (!searchTerm) {
       return blog;
@@ -43,7 +46,7 @@ const BlogContent = ({ dark }: { dark: boolean }) => {
       }, 5000);
 
       try {
-        const res = await axios.get(`${process.env.API_DEV}blogs`);
+        const res = await axios.get(`${API_URL}blogs`);
 
         setBlog(
           res.data.filter(
@@ -52,6 +55,8 @@ const BlogContent = ({ dark }: { dark: boolean }) => {
         );
       } catch (error) {
         console.error("Error fetching blog posts:", error);
+        // Set empty array to show "no blogs" state instead of loading forever
+        setBlog([]);
       } finally {
         setIsLoading(false);
         if (timerRef.current) {
@@ -67,7 +72,7 @@ const BlogContent = ({ dark }: { dark: boolean }) => {
         clearTimeout(timerRef.current);
       }
     };
-  }, []);
+  }, [API_URL]);
 
   const renderLoadingState = () => (
     <div className="flex flex-col items-center justify-center gap-6">
@@ -122,29 +127,27 @@ const BlogContent = ({ dark }: { dark: boolean }) => {
   return (
     <Card dark={dark} className="!gap-4">
       <DotCircleContent dark={dark} title="Blogs" />
-      {isLoading && (
-        <Input
-          dark={dark}
-          placeholder="Search Blogs"
-          icon={{
-            iconLeft: (
-              <Search
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-grayText"
-                size={18}
-              />
-            ),
-            iconRight: searchTerm.length > 0 && (
-              <X
-                onClick={() => setSearchTerm("")}
-                size={18}
-                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-grayText"
-              />
-            ),
-          }}
-          onChange={setSearchTerm}
-          value={searchTerm}
-        />
-      )}
+      <Input
+        dark={dark}
+        placeholder="Search Blogs"
+        icon={{
+          iconLeft: (
+            <Search
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-grayText"
+              size={18}
+            />
+          ),
+          iconRight: searchTerm.length > 0 && (
+            <X
+              onClick={() => setSearchTerm("")}
+              size={18}
+              className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-grayText"
+            />
+          ),
+        }}
+        onChange={setSearchTerm}
+        value={searchTerm}
+      />
 
       {isLoading ? (
         renderLoadingState()

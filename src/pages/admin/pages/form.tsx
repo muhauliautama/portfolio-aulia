@@ -17,6 +17,9 @@ function BlogForm() {
   const [mainImage, setMainImage] = useState<File | null>(null);
   const [currentPhoto, setCurrentPhoto] = useState<string>("");
 
+  // Use import.meta.env for Vite environment variables
+  const API_URL = import.meta.env.VITE_API_DEV || 'https://api.example.com/';
+
   useEffect(() => {
     if (isEditing) {
       fetchBlog(id);
@@ -31,7 +34,7 @@ function BlogForm() {
   const fetchBlog = async (blogId: string) => {
     try {
       const response = await axios.get(
-        process.env.API_DEV + `blogs/detail/${blogId}`
+        API_URL + `blogs/detail/${blogId}`
       );
       const blog = response.data;
       setTitle(blog.title);
@@ -59,7 +62,7 @@ function BlogForm() {
   );
 
   const handleImageUpload = useCallback(async (file: File): Promise<string> => {
-    const uploadUrl = process.env.API_DEV + "uploads/image";
+    const uploadUrl = API_URL + "uploads/image";
     const formData = new FormData();
     formData.append("image", file);
 
@@ -80,7 +83,7 @@ function BlogForm() {
       alert("Gagal mengupload gambar");
       throw new Error("Gagal mengupload gambar");
     }
-  }, []);
+  }, [API_URL]);
 
   const handleSubmit = useCallback(async () => {
     if (!title || !blogContent) {
@@ -96,7 +99,7 @@ function BlogForm() {
         mainImageFormData.append("image", mainImage);
 
         const mainImageUploadResponse = await axios.post<{ imageUrl: string }>(
-          process.env.API_DEV + "uploads/image",
+          API_URL + "uploads/image",
           mainImageFormData,
           {
             headers: {
@@ -112,8 +115,8 @@ function BlogForm() {
 
       const requestMethod = isEditing ? axios.put : axios.post;
       const requestUrl = isEditing
-        ? process.env.API_DEV + `blogs/${id}`
-        : process.env.API_DEV + "blogs";
+        ? API_URL + `blogs/${id}`
+        : API_URL + "blogs";
 
       const payload = {
         title: title,
@@ -141,7 +144,7 @@ function BlogForm() {
       );
       alert(`Gagal ${isEditing ? "mengupdate" : "menyimpan"} blog!`);
     }
-  }, [title, blogContent, mainImage, currentPhoto, isEditing, id, navigate]);
+  }, [title, blogContent, mainImage, currentPhoto, isEditing, id, navigate, API_URL]);
 
   return (
     <AdminLayout>

@@ -17,6 +17,9 @@ const BlogDetailContent = ({ dark }: { dark: boolean }) => {
   const currentUrl = window.location.href;
   const generateText = `Kayaknya cuma aku doang yang suka pusing mikirin ${blogTitle}. Biar nggak pusing sendiri, aku jadiin tulisan aja. Ada yang senasib? 😭 #curhat #relateable`;
 
+  // Use import.meta.env for Vite environment variables
+  const API_URL = import.meta.env.VITE_API_DEV || 'https://api.example.com/';
+
   const twitterShareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
     currentUrl
   )}&text=${encodeURIComponent(generateText)}`;
@@ -37,15 +40,20 @@ const BlogDetailContent = ({ dark }: { dark: boolean }) => {
 
   useEffect(() => {
     const fetchBlogDetail = async () => {
-      const res = await axios.get(
-        process.env.API_DEV + "blogs/detail/" + url.id
-      );
-
-      setBlogDetail(res.data);
+      try {
+        const res = await axios.get(
+          API_URL + "blogs/detail/" + url.id
+        );
+        setBlogDetail(res.data);
+      } catch (error) {
+        console.error("Error fetching blog detail:", error);
+      }
     };
 
-    fetchBlogDetail();
-  }, [url.id]);
+    if (url.id) {
+      fetchBlogDetail();
+    }
+  }, [url.id, API_URL]);
 
   return (
     <>
